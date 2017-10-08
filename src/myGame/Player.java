@@ -10,14 +10,22 @@ public class Player {
     private String fullName;
     private String gameName;
     private int playerNumber;
-    protected static Player[] players = new Player[2];
+    private int score;
+    protected static Player[] players = new Player[3];
 
     public Player() {
         this.fullName = "Computer";
         this.gameName = "O";
         this.playerNumber = numPlayers;
-        players[1] = this;
+        players[numPlayers] = this;
         numPlayers += 1;
+        this.score = 0;
+    }
+
+    public Player(boolean placeholder) {
+        this.fullName = "";
+        this.gameName = "";
+        this.score = -1;
     }
 
     public Player(String name) {
@@ -53,11 +61,36 @@ public class Player {
         return numPlayers;
     }
 
+    public Player[] getPlayers() {
+        return players;
+    }
+
+    public Player getOpponent() {
+        return players[(this.playerNumber + 1) % 2];
+    }
+
     public boolean equals(Object o) {
         if (o instanceof Player) {
             return (((Player) o).playerNumber == this.getPlayerNumber());
         } else {
             return false;
         }
+    }
+
+    //TODO if I ever include lowercase letters, also include 2 point games
+    public void wonGame() {
+        this.score += 1;
+    }
+
+    public int getScore() {
+        return this.score;
+    }
+
+    public void resetScore() {
+        this.score = 0;
+    }
+
+    public String toString() {
+        return this.getFullName();
     }
 }

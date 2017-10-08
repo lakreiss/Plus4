@@ -87,28 +87,28 @@ public class Board {
         return this.height;
     }
 
-    public String getWinner(Player[] players) {
+    public Player getWinningPlayer(Player[] players) {
         int[] winsH = checkHorizontal();
         int[] winsV = checkVertical();
         int[] winsD = checkDiagonals();
 
         int[] totalWins = getTotalWins(winsH, winsD, winsV);
         if (totalWins[0] == 0 && totalWins[1] == 0) {
-            return "";
+            return players[2];
         } else {
-            return getNameOfWinner(players, totalWins);
+            return getWinner(players, totalWins);
         }
     }
 
-    private String getNameOfWinner(Player[] players, int[] totalWins) {
+    private Player getWinner(Player[] players, int[] totalWins) {
         int p1Score = totalWins[0];
         int p2Score = totalWins[1];
         if (p1Score > p2Score) {
-            return players[0].getFullName();
+            return players[0];
         } else if (p2Score > p1Score) {
-            return players[1].getFullName();
+            return players[1];
         } else {
-            return "tie";
+            return players[2];
         }
     }
 

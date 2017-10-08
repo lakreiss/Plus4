@@ -12,7 +12,7 @@ public class Tile {
     public Tile() {
         this.empty = true;
         this.contents = " ";
-        this.playerWithControl = new Nobody();
+        this.playerWithControl = new Nobody(true);
     }
 
     public Tile(Tile oldTile) {

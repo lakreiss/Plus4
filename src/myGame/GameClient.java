@@ -7,6 +7,9 @@ import java.util.Scanner;
  */
 public class GameClient {
 
+    //TODO ask if user wants this
+    private static final boolean GAME_TO_10 = true;
+
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
         System.out.println(intro());
@@ -19,13 +22,18 @@ public class GameClient {
     }
 
     private static void playGame(Player[] players, Board gameBoard, Scanner console) {
+        boolean reached10 = false;
         boolean gameOver = false;
+        Player winningPlayer = null;
         String winner = "";
         System.out.println("Begin! \n\n\n");
         boolean p1Turn = true;
         Player curPlayer;
 
         while (!gameOver) {
+            System.out.println("Score:");
+            System.out.println(players[0] + ": " + players[0].getScore());
+            System.out.println(players[1] + ": " + players[1].getScore());
 
             System.out.println(gameBoard.toString());
 
@@ -35,10 +43,10 @@ public class GameClient {
                 curPlayer = players[1];
             }
 
-
             gameBoard.addPiece(curPlayer, curPlayer.getPlay(gameBoard, console));
 
-            winner = gameBoard.getWinner(players);
+            winningPlayer = gameBoard.getWinningPlayer(players);
+            winner = winningPlayer.getFullName();
             p1Turn = !p1Turn;
             if (!winner.equals("")) {
                 gameOver = true;
@@ -50,19 +58,60 @@ public class GameClient {
             System.out.println("It's a tie!");
         } else {
             System.out.println(winner + " wins!");
+            winningPlayer.wonGame();
         }
 
         System.out.println(gameBoard.toString());
+
+        if (GAME_TO_10) {
+
+            if (players[0].getScore() > players[1].getScore()) {
+                if (players[0].getScore() >= 10) {
+                    reached10 = true;
+                    System.out.println(players[0].getFullName() + " scored 10 points and won!");
+                }
+            } else if (players[1].getScore() > players[0].getScore()){
+                if (players[1].getScore() >= 10) {
+                    reached10 = true;
+                    System.out.println(players[1].getFullName() + " scored 10 points and won!");
+                }
+            } else {
+                if (players[0].getScore() >= 10) {
+                    reached10 = true;
+                    System.out.println(players[0].getFullName() + " and " + players[1].getFullName() + " tied!");
+                }
+            }
+        }
+
+        if (playAgain(console)) {
+            if (reached10) {
+                players[0].resetScore();
+                players[1].resetScore();
+                reached10 = false;
+            }
+            playGame(players, new Board(), console);
+        }
+    }
+
+    private static boolean playAgain(Scanner console) {
+        System.out.println("Play again? y for yes, anything else for no ");
+        Scanner line = new Scanner(console.nextLine());
+        if (line.next().equals("y")) {
+            return true;
+        }
+        return false;
     }
 
     private static Player[] getPlayers(int numPlayers, Scanner console) {
-        Player[] players = new Player[2];
+        Player[] players = new Player[3];
         for (int i = 0; i < numPlayers; i++) {
             players[i] = getHumanPlayer(i + 1, console);
         }
         if (numPlayers == 1) {
             players[1] = getComputerPlayer();
         }
+
+        players[2] = new Nobody();
         return players;
     }
 
