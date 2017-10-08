@@ -29,6 +29,11 @@ public class ComputerPlayer extends Player {
     }
 
     private int playMedium(Board board) {
-        
+        Board curBoardState = new Board(board);
+        int possibleMoves = curBoardState.getWidth();
+        for (int i = 0; i < possibleMoves; i++) {
+//            if ()
+        }
+        return 1;
     }
 }

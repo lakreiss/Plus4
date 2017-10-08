@@ -9,7 +9,6 @@ public class Board {
     private int width, height;
     private Tile[][] tiles;
 
-
     //deciding whether to have non-square boards
 //    public Board(int w, int h) {
 //        this.width = w;
@@ -54,22 +53,6 @@ public class Board {
                 tiles[i][j] = new Tile();
             }
         }
-    }
-
-    public String toString() {
-        String fullBoard = "\n";
-        for (int i = 0 ; i < height; i++) {
-            String line = "";
-            for (int j = 0; j < width; j++) {
-                if (j == 0) {
-                    line += "|" + tiles[i][j].getContents() + "|";
-                } else {
-                    line += tiles[i][j].getContents() + "|";
-                }
-            }
-            fullBoard += line + "\n";
-        }
-        return fullBoard;
     }
 
     /**
@@ -238,5 +221,37 @@ public class Board {
             totalWins[i] = winsH[i] + winsD[i] + winsV[i];
         }
         return totalWins;
+    }
+
+    public String toString() {
+        String fullBoard = "\n";
+        for (int i = 0; i < width; i++) {
+            if (i == 0) {
+                fullBoard += "|" + i + "|";
+            } else {
+                fullBoard += i + "|";
+            }
+        }
+
+        fullBoard += "\n";
+
+        for (int i = 0; i < 2 * width + 1; i++) {
+            fullBoard += "_";
+        }
+
+        fullBoard += "\n";
+
+        for (int i = 0 ; i < height; i++) {
+            String line = "";
+            for (int j = 0; j < width; j++) {
+                if (j == 0) {
+                    line += "|" + tiles[i][j].getContents() + "|";
+                } else {
+                    line += tiles[i][j].getContents() + "|";
+                }
+            }
+            fullBoard += line + "\n";
+        }
+        return fullBoard;
     }
 }

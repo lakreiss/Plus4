@@ -10,11 +10,13 @@ public class Player {
     private String fullName;
     private String gameName;
     private int playerNumber;
+    protected static Player[] players = new Player[2];
 
     public Player() {
         this.fullName = "Computer";
         this.gameName = "O";
         this.playerNumber = numPlayers;
+        players[1] = this;
         numPlayers += 1;
     }
 
@@ -23,8 +25,10 @@ public class Player {
         this.fullName = name;
         if (playerNumber == 0) {
             this.gameName = "X";
+            players[0] = this;
         } else if (playerNumber == 1) {
             this.gameName = "O";
+            players[1] = this;
         }
         numPlayers += 1;
     }

@@ -34,8 +34,9 @@ public class GameClient {
             } else {
                 curPlayer = players[1];
             }
-            gameBoard.addPiece(curPlayer, curPlayer.getPlay(gameBoard, console));
 
+
+            gameBoard.addPiece(curPlayer, curPlayer.getPlay(gameBoard, console));
 
             winner = gameBoard.getWinner(players);
             p1Turn = !p1Turn;
