@@ -22,17 +22,33 @@ public class Board {
         this.width = n;
         this.height = n;
         this.tiles = new Tile[height][width];
-        buildTiles(tiles);
+        buildEmptyTiles(tiles);
     }
 
     public Board() {
         this.width = STANDARD_WIDTH;
         this.height = STANDARD_HEIGHT;
         this.tiles = new Tile[height][width];
-        buildTiles(tiles);
+        buildEmptyTiles(tiles);
     }
 
-    private void buildTiles(Tile[][] tiles) {
+    public Board(Board oldBoard) {
+        this.width = oldBoard.width;
+        this.height = oldBoard.height;
+        this.tiles = new Tile[height][width];
+        duplicateTiles(tiles, oldBoard.tiles);
+
+    }
+
+    private void duplicateTiles(Tile[][] theseTiles, Tile[][] oldTiles) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                theseTiles[i][j] = new Tile(oldTiles[i][j]);
+            }
+        }
+    }
+
+    private void buildEmptyTiles(Tile[][] tiles) {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 tiles[i][j] = new Tile();

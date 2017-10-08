@@ -15,6 +15,12 @@ public class Tile {
         this.playerWithControl = new Nobody();
     }
 
+    public Tile(Tile oldTile) {
+        this.empty = oldTile.empty;
+        this.contents = oldTile.contents;
+        this.playerWithControl = oldTile.playerWithControl;
+    }
+
     public void setContents(Player player) {
         this.empty = false;
         this.playerWithControl = player;
