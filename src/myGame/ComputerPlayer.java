@@ -19,12 +19,16 @@ public class ComputerPlayer extends Player {
 
     //Has the scanner variable for overriding, but isn't used
     public int getPlay(Board board, Scanner scanner) {
-        if (this.difficulty.equals("easy")){
+        if (this.difficulty.equals("easy")) {
             return ((int) (Math.random() * 12)) % 4;
-        } else {
-            //TODO
+        } else if (this.difficulty.equals("medium")) {
+            return (playMedium(board));
         }
 
         return 1;
+    }
+
+    private int playMedium(Board board) {
+        
     }
 }
