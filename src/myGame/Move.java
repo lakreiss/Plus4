@@ -9,9 +9,11 @@ import java.util.Scanner;
  * Created by liamkreiss on 10/7/17.
  */
 public class Move implements Comparable {
+    private final double MAX_SCORE = 10.0;
+    private final double MIN_SCORE = 0.0;
     private Board startingBoard;
     private int col;
-    private double score; //out of 10
+    private double score; //out of MAX_SCORE
     private int movesInAdvance;
 
     /**
@@ -32,9 +34,9 @@ public class Move implements Comparable {
         Player winningPlayer = startingBoard.getWinningPlayer(curPlayer.getPlayers());
         String winner = winningPlayer.getFullName();
         if (winner.equals(curPlayer.getFullName())) {
-            return 10.0;
+            return MAX_SCORE;
         } else if (winner.equals(curPlayer.getOpponent().getFullName())) {
-            return 0.0;
+            return MIN_SCORE;
         } else {
             if (movesInAdvance > 1) {
                 ArrayList<Move> allMoves = new ArrayList<>();
@@ -44,9 +46,12 @@ public class Move implements Comparable {
                 }
 
                 Collections.sort(allMoves);
-                return 10.0 - allMoves.get(allMoves.size() - 1).getCol();
+
+                //MAX_SCORE - 1 so that 'not losing' isnt as good as 'winning'
+                return (MAX_SCORE - 1) - allMoves.get(allMoves.size() - 1).getCol();
             } else {
-                return 5.0 + Math.random() * 6 - 3;
+                return (MAX_SCORE / 2) + (Math.random() * (MAX_SCORE - MIN_SCORE) * 2 / 3)
+                        - ((MAX_SCORE - MIN_SCORE) / 3);
             }
         }
     }
