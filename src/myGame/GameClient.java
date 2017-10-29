@@ -26,14 +26,11 @@ public class GameClient {
         boolean gameOver = false;
         Player winningPlayer = null;
         String winner = "";
-        System.out.println("Begin! \n\n\n");
+        System.out.println("Begin! \n");
         boolean p1Turn = true;
         Player curPlayer;
 
         while (!gameOver) {
-            System.out.println("Score:");
-            System.out.println(players[0] + ": " + players[0].getScore());
-            System.out.println(players[1] + ": " + players[1].getScore());
 
             System.out.println(gameBoard.toString());
 
@@ -63,6 +60,11 @@ public class GameClient {
 
         System.out.println(gameBoard.toString());
 
+        checkGameOver(players, reached10, console);
+
+    }
+
+    private static void checkGameOver(Player[] players, boolean reached10, Scanner console) {
         if (GAME_TO_10) {
 
             if (players[0].getScore() > players[1].getScore()) {
@@ -87,9 +89,18 @@ public class GameClient {
             if (reached10) {
                 players[0].resetScore();
                 players[1].resetScore();
-                reached10 = false;
             }
+            System.out.println("\nScore:");
+            System.out.println(players[0] + ": " + players[0].getScore());
+            System.out.println(players[1] + ": " + players[1].getScore());
+            System.out.println();
+
             playGame(players, new Board(), console);
+        } else {
+            System.out.println("\nFinal Score:");
+            System.out.println(players[0] + ": " + players[0].getScore());
+            System.out.println(players[1] + ": " + players[1].getScore());
+            System.out.println();
         }
     }
 

@@ -48,7 +48,7 @@ public class Move implements Comparable {
                 Collections.sort(allMoves);
 
                 //MAX_SCORE - 1 so that 'not losing' isnt as good as 'winning'
-                return (MAX_SCORE - 1) - allMoves.get(allMoves.size() - 1).getCol();
+                return (MAX_SCORE - 1) - allMoves.get(0).getScore();
             } else {
                 return (MAX_SCORE / 2) + (Math.random() * (MAX_SCORE - MIN_SCORE) * 2 / 3)
                         - ((MAX_SCORE - MIN_SCORE) / 3);
@@ -66,5 +66,9 @@ public class Move implements Comparable {
             return (int) ((Move) o).score - (int) this.score;
         }
         return Integer.MIN_VALUE;
+    }
+
+    public double getScore() {
+        return this.score;
     }
 }
