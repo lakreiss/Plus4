@@ -1,9 +1,9 @@
-package myGame;
+package myGame.gameplay;
+
+import myGame.player.Player;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.Scanner;
 
 /**
  * Created by liamkreiss on 10/7/17.
@@ -11,10 +11,8 @@ import java.util.Scanner;
 public class Move implements Comparable {
     private final double MAX_SCORE = 10.0;
     private final double MIN_SCORE = 0.0;
-    private Board startingBoard;
     private int col;
     private double score; //out of MAX_SCORE
-    private int movesInAdvance;
 
     /**
      * col is the column which the move places a piece at
@@ -23,9 +21,7 @@ public class Move implements Comparable {
      * @param col
      */
     public Move(Board startingBoard, int col, Player curPlayer, int movesInAdvance) {
-        this.startingBoard = startingBoard;
         this.col = col;
-        this.movesInAdvance = movesInAdvance;
         this.score = calcScore(startingBoard, col, curPlayer, movesInAdvance);
     }
 
@@ -56,10 +52,6 @@ public class Move implements Comparable {
         }
     }
 
-    public int getCol() {
-        return this.col;
-    }
-
     @Override
     public int compareTo(Object o) {
         if (o instanceof Move) {
@@ -70,5 +62,9 @@ public class Move implements Comparable {
 
     public double getScore() {
         return this.score;
+    }
+
+    public int getCol() {
+        return this.col;
     }
 }

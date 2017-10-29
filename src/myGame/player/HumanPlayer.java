@@ -1,4 +1,6 @@
-package myGame;
+package myGame.player;
+
+import myGame.gameplay.Board;
 
 import java.util.Scanner;
 

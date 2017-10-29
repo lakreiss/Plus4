@@ -1,5 +1,8 @@
 package myGame;
 
+import myGame.gameplay.Board;
+import myGame.player.*;
+
 import java.util.Scanner;
 
 /**
@@ -119,7 +122,7 @@ public class GameClient {
             players[i] = getHumanPlayer(i + 1, console);
         }
         if (numPlayers == 1) {
-            players[1] = getComputerPlayer();
+            players[1] = getComputerPlayer(console);
         }
 
         players[2] = new Nobody();
@@ -175,7 +178,19 @@ public class GameClient {
         return console.nextLine();
     }
 
-    public static Player getComputerPlayer() {
-        return new ComputerPlayer();
+    public static Player getComputerPlayer(Scanner console) {
+        System.out.println("What difficulty would you like to play on?");
+        System.out.println("Easy (e), Medium (m), or Hard (h)? ");
+        String difficulty = console.nextLine().toLowerCase();
+        if (difficulty.equals("e") || difficulty.equals("easy")) {
+            return new EasyComputer();
+        } else if (difficulty.equals("m") || difficulty.equals("medium")) {
+            return new MediumComputer();
+        } else if (difficulty.equals("h") || difficulty.equals("hard")) {
+            return new HardComputer();
+        } else {
+            System.out.println("You entered invalid input. Please try again.");
+            return getComputerPlayer(console);
+        }
     }
 }

@@ -1,4 +1,6 @@
-package myGame;
+package myGame.gameplay;
+
+import myGame.player.Player;
 
 /**
  * Created by liamkreiss on 10/7/17.
