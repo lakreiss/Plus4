@@ -69,6 +69,14 @@ public class SimulateGameClient {
             p1Turn = !p1Turn;
             if (!winner.equals("")) {
                 gameOver = true;
+            } else if (compressedGame.length() > 19) {
+                if (compressedGame.substring(compressedGame.length() - 19).equals("0 0 0 0 0 0 0 0 0 0")
+                        || compressedGame.substring(compressedGame.length() - 19).equals("1 1 1 1 1 1 1 1 1 1")
+                        || compressedGame.substring(compressedGame.length() - 19).equals("2 2 2 2 2 2 2 2 2 2")
+                        || compressedGame.substring(compressedGame.length() - 19).equals("3 3 3 3 3 3 3 3 3 3")) {
+                    gameOver = true;
+                    winner = "tie";
+                }
             }
         }
 

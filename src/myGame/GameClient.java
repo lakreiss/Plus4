@@ -45,6 +45,7 @@ public class GameClient {
         System.out.println("Begin! \n");
         boolean p1Turn = true;
         Player curPlayer;
+        String compressedGame = "";
 
         while (!gameOver) {
 
@@ -61,8 +62,17 @@ public class GameClient {
             winningPlayer = gameBoard.getWinningPlayer(players);
             winner = winningPlayer.getFullName();
             p1Turn = !p1Turn;
+            compressedGame = gameBoard.getMoves();
             if (!winner.equals("")) {
                 gameOver = true;
+            } else if (compressedGame.length() > 19) {
+                if (compressedGame.substring(compressedGame.length() - 19).equals("0 0 0 0 0 0 0 0 0 0")
+                        || compressedGame.substring(compressedGame.length() - 19).equals("1 1 1 1 1 1 1 1 1 1")
+                        || compressedGame.substring(compressedGame.length() - 19).equals("2 2 2 2 2 2 2 2 2 2")
+                        || compressedGame.substring(compressedGame.length() - 19).equals("3 3 3 3 3 3 3 3 3 3")) {
+                    gameOver = true;
+                    winner = "tie";
+                }
             }
         }
 
@@ -80,7 +90,7 @@ public class GameClient {
         //needs human player to be player 1
         if (saveToData && winningPlayer instanceof HumanPlayer
                 && winningPlayer.getOpponent() instanceof ComputerPlayer) {
-            String compressedGame = gameBoard.getMoves() + " " + "Computer" + (winningPlayer.getPlayerNumber() + 1) + " wins!";
+            compressedGame = gameBoard.getMoves() + " " + "Computer" + (winningPlayer.getPlayerNumber() + 1) + " wins!";
             output.println(compressedGame);
         }
 
