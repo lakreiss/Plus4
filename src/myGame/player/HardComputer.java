@@ -19,10 +19,10 @@ public class HardComputer extends ComputerPlayer{
     }
 
     public int getPlay(Board board, Scanner scanner) {
-        return super.playWithMovesInAdvance(board, MOVES_IN_ADVANCE);
+        return getPlay(board);
     }
 
     public int getPlay(Board board) {
-        return getPlay(board, null);
+        return super.playWithMovesInAdvance(board, MOVES_IN_ADVANCE);
     }
 }

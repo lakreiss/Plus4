@@ -11,6 +11,8 @@ public class Board {
     private int width, height;
     private Tile[][] tiles;
 
+    String moves;
+
     //deciding whether to have non-square boards
 //    public Board(int w, int h) {
 //        this.width = w;
@@ -20,6 +22,7 @@ public class Board {
 //    }
 
     public Board(int n) {
+        this.moves = "";
         this.width = n;
         this.height = n;
         this.tiles = new Tile[height][width];
@@ -27,6 +30,7 @@ public class Board {
     }
 
     public Board() {
+        this.moves = "";
         this.width = STANDARD_WIDTH;
         this.height = STANDARD_HEIGHT;
         this.tiles = new Tile[height][width];
@@ -34,6 +38,7 @@ public class Board {
     }
 
     public Board(Board oldBoard) {
+        this.moves = oldBoard.getMoves();
         this.width = oldBoard.width;
         this.height = oldBoard.height;
         this.tiles = new Tile[height][width];
@@ -63,6 +68,12 @@ public class Board {
      * @param j = column
      */
     public int addPiece(Player player, int j) {
+        if (moves.equals("")) {
+            this.moves = "" + j;
+        } else {
+            this.moves += " " + j;
+        }
+
         int i = 0;
         if (i < height && !tiles[i][j].isEmpty()) {
             addPiece(tiles[i][j].getPlayerWithControl(), i + 1, j);
@@ -88,6 +99,10 @@ public class Board {
 
     public int getHeight() {
         return this.height;
+    }
+
+    public String getMoves() {
+        return this.moves;
     }
 
     public Player getWinningPlayer(Player[] players) {

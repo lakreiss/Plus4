@@ -3,6 +3,10 @@ package myGame;
 import myGame.gameplay.Board;
 import myGame.player.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 /**
@@ -10,21 +14,29 @@ import java.util.Scanner;
  */
 public class GameClient {
 
+    public static boolean saveToData = true;
+    private static final String DATA_FILE = "sorted_data1509263547617";
+
     //TODO ask if user wants this
     private static final boolean GAME_TO_10 = true;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Scanner console = new Scanner(System.in);
         System.out.println(intro());
         int numPlayers = getNumPlayers(console);
         Player[] players = getPlayers(numPlayers, console);
         Board gameBoard = new Board();
+        PrintStream output = null;
 
-        playGame(players, gameBoard, console);
+        if (saveToData) {
+            output = new PrintStream( new FileOutputStream(DATA_FILE, true));
+        }
+
+        playGame(players, gameBoard, console, output);
 
     }
 
-    private static void playGame(Player[] players, Board gameBoard, Scanner console) {
+    private static void playGame(Player[] players, Board gameBoard, Scanner console, PrintStream output) {
         boolean reached10 = false;
         boolean gameOver = false;
         Player winningPlayer = null;
@@ -63,11 +75,18 @@ public class GameClient {
 
         System.out.println(gameBoard.toString());
 
-        checkGameOver(players, reached10, console);
+
+        //needs human player to be player 1
+        if (saveToData && winningPlayer.getPlayerNumber() == 0) {
+            String compressedGame = gameBoard.getMoves() + " " + "Computer1 wins!";
+            output.print(compressedGame);
+        }
+
+        checkGameOver(players, reached10, console, output);
 
     }
 
-    private static void checkGameOver(Player[] players, boolean reached10, Scanner console) {
+    private static void checkGameOver(Player[] players, boolean reached10, Scanner console, PrintStream output) {
         if (GAME_TO_10) {
 
             if (players[0].getScore() > players[1].getScore()) {
@@ -98,7 +117,7 @@ public class GameClient {
             System.out.println(players[1] + ": " + players[1].getScore());
             System.out.println();
 
-            playGame(players, new Board(), console);
+            playGame(players, new Board(), console, output);
         } else {
             System.out.println("\nFinal Score:");
             System.out.println(players[0] + ": " + players[0].getScore());
@@ -180,7 +199,7 @@ public class GameClient {
 
     public static Player getComputerPlayer(Scanner console) {
         System.out.println("What difficulty would you like to play on?");
-        System.out.println("Easy (e), Medium (m), or Hard (h)? ");
+        System.out.println("Easy (e), Medium (m), Hard (h), or Intelligent (i)? ");
         String difficulty = console.nextLine().toLowerCase();
         if (difficulty.equals("e") || difficulty.equals("easy")) {
             return new EasyComputer();
@@ -188,6 +207,8 @@ public class GameClient {
             return new MediumComputer();
         } else if (difficulty.equals("h") || difficulty.equals("hard")) {
             return new HardComputer();
+        } else if (difficulty.equals("i") || difficulty.equals("intelligent")) {
+            return new IntelligentComputer();
         } else {
             System.out.println("You entered invalid input. Please try again.");
             return getComputerPlayer(console);

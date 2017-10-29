@@ -11,7 +11,7 @@ public class Player {
     private static int numPlayers = 0;
     private String fullName;
     private String gameName;
-    private int playerNumber;
+    protected int playerNumber;
     private int score;
     protected static Player[] players = new Player[3];
 

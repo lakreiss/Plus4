@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import myGame.gameplay.Board;
 import myGame.player.HardComputer;
+import myGame.player.IntelligentComputer;
 import myGame.player.Nobody;
 import myGame.player.Player;
 
@@ -18,7 +19,7 @@ import java.util.Scanner;
  */
 public class SimulateGameClient {
 
-    private static final int GAMES_TO_PLAY = 500;
+    private static final int GAMES_TO_PLAY = 2000;
 
     public static void main(String[] args) throws FileNotFoundException {
         Player[] players = new Player[]{

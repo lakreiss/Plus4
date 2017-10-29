@@ -5,3 +5,5 @@ gets their 4-in-a-row with their special piece, they get two points while their 
 Game to 10.
 
 two moves ahead not working perfectly.
+
+TODO: enforce tie if the same board state is repeated in n consecutive turns
