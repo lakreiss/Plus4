@@ -60,14 +60,15 @@ public class Board {
     /**
      * j = column
      * @param player
-     * @param j
+     * @param j = column
      */
-    public void addPiece(Player player, int j) {
+    public int addPiece(Player player, int j) {
         int i = 0;
         if (i < height && !tiles[i][j].isEmpty()) {
             addPiece(tiles[i][j].getPlayerWithControl(), i + 1, j);
         }
         tiles[i][j].setContents(player);
+        return j;
     }
 
     private void addPiece(Player player, int i, int j) {

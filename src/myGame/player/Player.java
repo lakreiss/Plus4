@@ -47,6 +47,10 @@ public class Player {
         return -1;
     }
 
+    public int getPlay(Board gameBoard) {
+        return -1;
+    }
+
     public String getGameName() {
         return this.gameName;
     }

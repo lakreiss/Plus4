@@ -12,6 +12,14 @@ import java.util.Scanner;
  */
 public class ComputerPlayer extends Player {
 
+    public ComputerPlayer() {
+        super();
+    }
+
+    public ComputerPlayer(String name) {
+        super(name);
+    }
+
     public int getPlay(Board board, Scanner scanner) {
         return -1;
     }
