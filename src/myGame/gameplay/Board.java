@@ -6,7 +6,10 @@ import myGame.player.Player;
  * Created by liamkreiss on 10/7/17.
  */
 public class Board {
-    private int STANDARD_WIDTH = 4, STANDARD_HEIGHT = 4;
+
+    private int STANDARD_SIZE = 4;
+    private int STANDARD_WIDTH = STANDARD_SIZE, STANDARD_HEIGHT = STANDARD_SIZE; //gives flexibility, although non-square boards would mess up daigonal win checker
+
 
     private int width, height;
     private Tile[][] tiles;
@@ -73,7 +76,6 @@ public class Board {
         } else {
             this.moves += " " + j;
         }
-
         int i = 0;
         if (i < height && !tiles[i][j].isEmpty()) {
             addPiece(tiles[i][j].getPlayerWithControl(), i + 1, j);

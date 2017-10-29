@@ -13,13 +13,16 @@ public class Player {
     private String gameName;
     protected int playerNumber;
     private int score;
-    protected static Player[] players = new Player[3];
+    protected static Player[] players;
 
     public Player() {
         this.fullName = "Computer";
-        this.gameName = "O";
         this.playerNumber = numPlayers;
-        players[numPlayers] = this;
+        if (playerNumber == 0) {
+            this.gameName = "X";
+        } else if (playerNumber == 1) {
+            this.gameName = "O";
+        }
         numPlayers += 1;
         this.score = 0;
     }
@@ -35,10 +38,8 @@ public class Player {
         this.fullName = name;
         if (playerNumber == 0) {
             this.gameName = "X";
-            players[0] = this;
         } else if (playerNumber == 1) {
             this.gameName = "O";
-            players[1] = this;
         }
         numPlayers += 1;
     }
@@ -63,12 +64,12 @@ public class Player {
         return this.playerNumber;
     }
 
-    public int getNumPlayers() {
-        return numPlayers;
-    }
-
     public Player[] getPlayers() {
         return players;
+    }
+
+    public static void setPlayers(Player[] allPlayers) {
+        players = allPlayers;
     }
 
     public Player getOpponent() {

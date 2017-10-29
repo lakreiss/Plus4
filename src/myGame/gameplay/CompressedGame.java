@@ -20,11 +20,11 @@ public class CompressedGame {
 
         String winner = game.next();
         if (winner.equals("Computer1")) {
-            this.winner = 1;
+            this.winner = 0;
         } else if (winner.equals("Computer2")) {
-            this.winner = 2;
+            this.winner = 1;
         } else {
-            this.winner = 3;
+            this.winner = 2;
         }
     }
 

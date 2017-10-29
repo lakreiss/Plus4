@@ -2,10 +2,8 @@ package myGame;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import myGame.gameplay.Board;
 import myGame.player.HardComputer;
 import myGame.player.IntelligentComputer;
@@ -19,18 +17,27 @@ import java.util.Scanner;
  */
 public class SimulateGameClient {
 
-    private static final int GAMES_TO_PLAY = 2000;
+    private static final int GAMES_TO_PLAY = 10;
+    private static final String DATA_FILE = "sorted_data1509308866982";
+    private static boolean addDirectlyToData = true;
 
     public static void main(String[] args) throws FileNotFoundException {
         Player[] players = new Player[]{
-                new HardComputer("Computer1"),
-                new HardComputer("Computer2"),
+                new IntelligentComputer("Computer1"),
+                new IntelligentComputer("Computer2"),
                 new Nobody()
         };
-        Board gameBoard = new Board();
 
-        File outputFile = new File("data" + System.currentTimeMillis());
-        PrintStream output = new PrintStream(outputFile);
+        Player.setPlayers(players);
+
+        Board gameBoard = new Board();
+        PrintStream output;
+
+        if (addDirectlyToData) {
+            output = new PrintStream(new FileOutputStream(DATA_FILE, true));
+        } else {
+            output = new PrintStream(new File("data" + System.currentTimeMillis()));
+        }
 
         playGame(output, players, gameBoard, GAMES_TO_PLAY, 0);
     }
@@ -41,6 +48,7 @@ public class SimulateGameClient {
         String winner = "";
         boolean p1Turn = true;
         Player curPlayer;
+        String compressedGame = "";
 
         while (!gameOver) {
 
@@ -54,7 +62,7 @@ public class SimulateGameClient {
 
             int col = gameBoard.addPiece(curPlayer, curPlayer.getPlay(gameBoard));
 
-            output.print(col + " ");
+            compressedGame += (col + " ");
 
             winningPlayer = gameBoard.getWinningPlayer(players);
             winner = winningPlayer.getFullName();
@@ -65,10 +73,12 @@ public class SimulateGameClient {
         }
 
         if (winner.equals("tie")) {
-            output.println("It's a tie!");
+            compressedGame += ("It's a tie!");
         } else {
-            output.println(winner + " wins!");
+            compressedGame += (winner + " wins!");
         }
+
+        output.println(compressedGame);
 
         gamesPlayed++;
         if (gamesPlayed < gamesToPlay) {

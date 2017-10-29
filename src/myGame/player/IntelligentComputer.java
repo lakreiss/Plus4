@@ -12,7 +12,7 @@ import java.util.Scanner;
  * Created by liamkreiss on 10/28/17.
  */
 public class IntelligentComputer extends HardComputer {
-    private static File DATA_FILE = new File("sorted_data1509259229821");
+    private static File DATA_FILE = new File("sorted_data1509308866982");
     private Scanner fullData;
 
     public IntelligentComputer() {
@@ -24,7 +24,10 @@ public class IntelligentComputer extends HardComputer {
     }
 
     public int getPlay(Board board, Scanner scanner) {
+        return getPlay(board);
+    }
 
+    public int getPlay(Board board) {
         Scanner fullData = null;
 
         try {
@@ -62,14 +65,10 @@ public class IntelligentComputer extends HardComputer {
             }
         }
 
-        if (bestScore < 0) {
+        if (bestScore <= 0) {
             return super.getPlay(board);
         }
         return bestMove;
-    }
-
-    public int getPlay(Board board) {
-        return getPlay(board, null);
     }
 
     private double calcWinPercentageAfterMove(String movesSoFar, int i, ArrayList<CompressedGame> gamesWithSameMovesSoFar) {

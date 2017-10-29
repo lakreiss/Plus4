@@ -14,7 +14,7 @@ public class HumanPlayer extends Player {
     }
 
     public int getPlay(Board gameBoard, Scanner console) {
-        System.out.println("Where do you want to play?");
+        System.out.print("Where do you want to play? ");
         String errorMessage = "You entered an invalid input. Choose a column between 0 and "
                 + (gameBoard.getWidth() - 1) + ".\n" + "Please try again: ";
         int column;

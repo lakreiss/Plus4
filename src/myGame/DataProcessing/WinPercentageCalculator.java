@@ -11,11 +11,11 @@ import java.util.Scanner;
  * Created by liamkreiss on 10/28/17.
  */
 public class WinPercentageCalculator {
-    private static final String DATA_FILE = "sorted_data1509263547617";
+    private static final String DATA_FILE = "sorted_data1509308866982";
 
     //fill out every run
-    private static final String MOVES_SO_FAR = "3 0";
-    private static final int PLAYER_NUMBER = 1;
+    private static final String MOVES_SO_FAR = "3 2 2 3 2 0 3 0 2 2 1 1 0 1 0 3 3 1 1 0";
+    private static final int PLAYER_NUMBER = 0; //0 or 1
 
     public static void main(String[] args) throws FileNotFoundException {
         Scanner fullData = new Scanner(new File(DATA_FILE));

@@ -15,7 +15,8 @@ import java.util.Scanner;
 public class GameClient {
 
     public static boolean saveToData = true;
-    private static final String DATA_FILE = "sorted_data1509263547617";
+    private static final String DATA_FILE = "sorted_data1509308866982";
+    private static boolean computerGoesFirst = true;
 
     //TODO ask if user wants this
     private static final boolean GAME_TO_10 = true;
@@ -24,12 +25,12 @@ public class GameClient {
         Scanner console = new Scanner(System.in);
         System.out.println(intro());
         int numPlayers = getNumPlayers(console);
-        Player[] players = getPlayers(numPlayers, console);
+        Player[] players = getPlayers(numPlayers, console, computerGoesFirst);
         Board gameBoard = new Board();
         PrintStream output = null;
 
         if (saveToData) {
-            output = new PrintStream( new FileOutputStream(DATA_FILE, true));
+            output = new PrintStream(new FileOutputStream(DATA_FILE, true));
         }
 
         playGame(players, gameBoard, console, output);
@@ -77,9 +78,10 @@ public class GameClient {
 
 
         //needs human player to be player 1
-        if (saveToData && winningPlayer.getPlayerNumber() == 0) {
-            String compressedGame = gameBoard.getMoves() + " " + "Computer1 wins!";
-            output.print(compressedGame);
+        if (saveToData && winningPlayer instanceof HumanPlayer
+                && winningPlayer.getOpponent() instanceof ComputerPlayer) {
+            String compressedGame = gameBoard.getMoves() + " " + "Computer" + (winningPlayer.getPlayerNumber() + 1) + " wins!";
+            output.println(compressedGame);
         }
 
         checkGameOver(players, reached10, console, output);
@@ -135,16 +137,23 @@ public class GameClient {
         return false;
     }
 
-    private static Player[] getPlayers(int numPlayers, Scanner console) {
+    private static Player[] getPlayers(int numPlayers, Scanner console, boolean computerFirst) {
         Player[] players = new Player[3];
-        for (int i = 0; i < numPlayers; i++) {
-            players[i] = getHumanPlayer(i + 1, console);
-        }
-        if (numPlayers == 1) {
-            players[1] = getComputerPlayer(console);
+
+        if (computerFirst && numPlayers == 1) {
+            players[0] = getComputerPlayer(console);
+            players[1] = getHumanPlayer(2, console);
+        } else {
+            for (int i = 0; i < numPlayers; i++) {
+                players[i] = getHumanPlayer(i + 1, console);
+            }
+            if (numPlayers == 1) {
+                players[1] = getComputerPlayer(console);
+            }
         }
 
         players[2] = new Nobody();
+        Player.setPlayers(players);
         return players;
     }
 
@@ -193,13 +202,13 @@ public class GameClient {
     }
 
     public static String getName(int playerNum, Scanner console) {
-        System.out.print("What is Player " + playerNum + "s name? ");
+        System.out.print("What is Player " + playerNum + "'s name? ");
         return console.nextLine();
     }
 
     public static Player getComputerPlayer(Scanner console) {
         System.out.println("What difficulty would you like to play on?");
-        System.out.println("Easy (e), Medium (m), Hard (h), or Intelligent (i)? ");
+        System.out.print("Easy (e), Medium (m), Hard (h), or Intelligent (i)? ");
         String difficulty = console.nextLine().toLowerCase();
         if (difficulty.equals("e") || difficulty.equals("easy")) {
             return new EasyComputer();
