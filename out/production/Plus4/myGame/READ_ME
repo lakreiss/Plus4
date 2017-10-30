@@ -1,9 +1,5 @@
-Add on to the game gives each player 2 special pieces (lower case x and o) that, if victory is achieved
+Add on to the game gives each player 2 special pieces (lower case x and o, perhaps) that, if victory is achieved
 with the special piece, the winning team gets two points instead of one. If a tie occurs, but one player
 gets their 4-in-a-row with their special piece, they get two points while their opponent gets one.
 
-Game to 10.
-
-two moves ahead not working perfectly.
-
-TODO: enforce tie if the same board state is repeated in n consecutive turns
+sorted_data has about 17000 game simulations currently

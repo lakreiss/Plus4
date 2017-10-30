@@ -12,7 +12,7 @@ import java.util.Scanner;
  * Created by liamkreiss on 10/28/17.
  */
 public class IntelligentComputer extends HardComputer {
-    private static File DATA_FILE = new File("sorted_data1509308866982");
+    private static File DATA_FILE = new File("sorted_data1509326530126");
     private Scanner fullData;
 
     public IntelligentComputer() {

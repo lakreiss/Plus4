@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class GameClient {
 
     public static boolean saveToData = true;
-    private static final String DATA_FILE = "sorted_data1509308866982";
+    private static final String DATA_FILE = "sorted_data1509326530126";
 
     //TODO ask if user wants this
     private static final boolean GAME_TO_10 = true;
@@ -97,6 +97,8 @@ public class GameClient {
             System.out.println(winner + " wins!");
             winningPlayer.wonGame();
         }
+
+        System.out.println("Game log: " + gameBoard.getMoves());
 
         System.out.println(gameBoard.toString());
 

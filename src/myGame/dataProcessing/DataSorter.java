@@ -14,7 +14,7 @@ public class DataSorter {
 
     public static void main(String[] args) throws FileNotFoundException {
         String[] filesToProcess = new String[] {
-            //TODO
+            //insert files to process
         };
         ArrayList<String> allGames = new ArrayList<>();
         for (String file : filesToProcess) {
