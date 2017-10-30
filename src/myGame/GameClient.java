@@ -16,7 +16,6 @@ public class GameClient {
 
     public static boolean saveToData = true;
     private static final String DATA_FILE = "sorted_data1509308866982";
-    private static boolean computerGoesFirst = true;
 
     //TODO ask if user wants this
     private static final boolean GAME_TO_10 = true;
@@ -25,6 +24,11 @@ public class GameClient {
         Scanner console = new Scanner(System.in);
         System.out.println(intro());
         int numPlayers = getNumPlayers(console);
+        boolean computerGoesFirst = false;
+
+        if (numPlayers == 1) {
+            computerGoesFirst = getComputerGoesFirst(console);
+        }
         Player[] players = getPlayers(numPlayers, console, computerGoesFirst);
         Board gameBoard = new Board();
         PrintStream output = null;
@@ -35,6 +39,16 @@ public class GameClient {
 
         playGame(players, gameBoard, console, output);
 
+    }
+
+    private static boolean getComputerGoesFirst(Scanner console) {
+        System.out.print("Would you like to go first? y or yes for yes, anything else for no ");
+        Scanner line = new Scanner(console.nextLine());
+        String lineText = line.next().toLowerCase();
+        if (lineText.equals("y") || lineText.equals("yes")) {
+            return false;
+        }
+        return true;
     }
 
     private static void playGame(Player[] players, Board gameBoard, Scanner console, PrintStream output) {
@@ -139,9 +153,10 @@ public class GameClient {
     }
 
     private static boolean playAgain(Scanner console) {
-        System.out.println("Play again? y for yes, anything else for no ");
+        System.out.print("Play again? y for yes, anything else for no ");
         Scanner line = new Scanner(console.nextLine());
-        if (line.next().equals("y")) {
+        String lineText = line.next().toLowerCase();
+        if (lineText.equals("y") || lineText.equals("yes")) {
             return true;
         }
         return false;
