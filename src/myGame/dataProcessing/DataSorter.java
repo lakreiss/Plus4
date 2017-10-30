@@ -1,4 +1,4 @@
-package myGame.DataProcessing;
+package myGame.dataProcessing;
 
 import java.io.File;
 import java.io.FileNotFoundException;
