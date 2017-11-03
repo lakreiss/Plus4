@@ -98,7 +98,7 @@ public class GameClient {
             winningPlayer.wonGame();
         }
 
-        System.out.println("Game log: " + gameBoard.getMoves());
+//        System.out.println("Game log: " + gameBoard.getMoves());
 
         System.out.println(gameBoard.toString());
 
