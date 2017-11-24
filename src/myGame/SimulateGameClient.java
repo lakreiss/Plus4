@@ -18,8 +18,8 @@ import java.util.Scanner;
 public class SimulateGameClient {
 
     private static final int GAMES_TO_PLAY = 10;
-    private static final String DATA_FILE = "sorted_data1509326530126";
-    private static boolean addDirectlyToData = false;
+    private static final String DATA_FILE = "sorted_data1511502410478";
+    private static boolean addDirectlyToData = true;
 
     public static void main(String[] args) throws FileNotFoundException {
         Player[] players = new Player[]{

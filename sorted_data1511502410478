@@ -6313,6 +6313,7 @@
 0 3 3 1 3 0 1 3 1 1 0 1 0 3 3 1 1 3 0 0 1 0 0 1 0 0 0 2 1 2 1 0 3 0 0 3 1 1 2 3 2 0 0 2 Computer1 wins!
 0 3 3 1 3 1 0 0 0 2 2 3 0 0 1 Computer2 wins!
 0 3 3 1 3 1 3 3 0 2 2 3 0 0 0 Computer2 wins!
+0 3 3 1 3 1 3 3 1 1 0 1 2 1 1 0 2 0 1 3 1 2 Computer1 wins!
 0 3 3 1 3 2 0 0 0 0 1 2 0 1 1 0 0 0 0 1 1 0 0 1 1 3 0 2 0 0 Computer2 wins!
 0 3 3 1 3 3 0 1 3 0 0 0 2 2 1 0 1 3 3 3 0 0 Computer1 wins!
 0 3 3 1 3 3 1 1 0 2 1 0 3 0 3 0 0 0 1 3 2 Computer2 wins!
@@ -15327,8 +15328,10 @@
 3 0 2 0 3 3 0 0 0 3 3 0 3 0 2 0 0 0 0 2 0 1 2 2 2 2 2 0 0 0 0 2 2 0 0 0 0 2 3 3 2 0 0 2 3 0 0 0 0 0 2 0 2 0 0 0 1 1 3 1 0 3 2 2 Computer1 wins!
 3 0 2 0 3 3 0 0 2 2 0 1 1 2 0 0 1 Computer2 wins!
 3 0 2 0 3 3 3 1 0 0 1 2 3 2 0 3 0 0 1 Computer2 wins!
+3 0 2 1 0 0 0 2 1 3 0 2 2 0 2 0 2 2 0 2 3 Computer2 wins!
 3 0 2 1 0 0 0 3 0 0 0 1 0 1 1 0 1 0 1 1 0 1 1 0 1 3 0 2 3 2 Computer1 wins!
 3 0 2 1 0 0 2 1 0 2 1 0 1 0 1 0 Computer1 wins!
+3 0 2 1 0 0 2 1 0 2 1 3 0 2 0 Computer2 wins!
 3 0 2 1 0 0 2 1 3 2 2 2 1 2 2 3 2 0 1 0 0 0 Computer1 wins!
 3 0 2 1 0 0 3 0 0 0 2 0 2 2 1 2 2 1 0 3 2 0 Computer1 wins!
 3 0 2 1 0 0 3 3 0 2 3 1 0 2 0 0 0 Computer2 wins!
@@ -15357,6 +15360,7 @@
 3 0 2 1 1 1 1 2 2 2 1 2 2 3 1 1 3 0 3 1 3 Computer2 wins!
 3 0 2 1 1 1 2 1 0 2 2 0 0 3 0 1 0 Computer2 wins!
 3 0 2 1 1 1 3 0 2 3 0 1 3 2 0 1 1 0 1 1 Computer1 wins!
+3 0 2 1 1 1 3 3 0 1 0 2 2 1 0 Computer2 wins!
 3 0 2 1 1 2 0 0 0 1 3 2 0 0 0 0 2 0 0 3 2 0 Computer1 wins!
 3 0 2 1 1 2 0 1 0 2 1 3 2 0 2 1 Computer1 wins!
 3 0 2 1 1 2 0 3 1 3 2 0 0 Computer2 wins!
@@ -15368,9 +15372,11 @@
 3 0 2 1 1 2 3 2 0 3 0 0 1 Computer2 wins!
 3 0 2 1 1 3 2 1 0 1 0 2 3 1 1 0 1 1 Computer1 wins!
 3 0 2 1 1 3 3 3 1 1 3 1 2 1 1 3 2 2 0 3 0 2 0 Computer2 wins!
+3 0 2 1 2 0 1 2 3 2 2 3 2 3 0 0 2 2 3 2 0 Computer2 wins!
 3 0 2 1 2 0 1 3 0 2 0 3 0 0 1 0 1 Computer1 wins!
 3 0 2 1 2 0 1 3 1 2 3 0 0 3 Computer1 wins!
 3 0 2 1 2 0 3 1 1 1 0 0 Computer1 wins!
+3 0 2 1 2 0 3 2 0 2 0 3 3 1 2 3 1 Computer2 wins!
 3 0 2 1 2 1 0 0 0 0 3 1 1 1 Computer1 wins!
 3 0 2 1 2 1 0 3 2 2 1 3 0 0 3 2 0 Computer2 wins!
 3 0 2 1 2 1 1 1 2 2 1 1 0 1 1 1 1 0 0 1 0 2 2 0 0 3 2 3 1 1 1 1 2 1 Computer1 wins!
@@ -15382,6 +15388,8 @@
 3 0 2 1 2 3 0 1 0 3 1 0 0 0 0 1 2 1 Computer1 wins!
 3 0 2 1 2 3 1 3 1 1 3 1 0 0 2 2 1 2 0 Computer2 wins!
 3 0 2 1 3 0 0 2 0 1 1 1 Computer1 wins!
+3 0 2 1 3 0 0 2 0 2 0 0 0 3 2 3 2 1 1 0 2 2 3 2 0 Computer2 wins!
+3 0 2 1 3 0 0 2 0 2 3 3 2 1 1 Computer2 wins!
 3 0 2 1 3 0 0 3 0 0 3 3 0 1 0 0 0 1 1 0 0 2 0 3 1 0 3 3 Computer1 wins!
 3 0 2 1 3 1 3 3 0 0 0 0 0 3 1 1 2 0 3 0 0 1 Computer1 wins!
 3 0 2 1 3 1 3 3 1 0 0 0 3 2 1 0 1 0 Computer1 wins!
@@ -15439,8 +15447,10 @@
 3 0 2 3 0 1 1 0 2 0 3 3 0 0 1 Computer1 wins!
 3 0 2 3 0 1 1 1 2 1 1 2 0 2 3 0 0 Computer2 wins!
 3 0 2 3 0 1 2 1 0 1 1 1 Computer1 wins!
+3 0 2 3 0 2 0 1 2 1 2 3 2 2 1 0 3 2 0 Computer2 wins!
 3 0 2 3 0 2 0 3 0 0 0 0 3 0 3 0 0 3 2 1 2 1 3 0 0 0 2 2 1 0 1 1 Computer1 wins!
 3 0 2 3 0 2 1 2 2 1 0 1 3 2 0 0 Computer1 wins!
+3 0 2 3 0 2 1 2 2 1 0 1 3 3 1 Computer2 wins!
 3 0 2 3 0 2 2 0 1 0 2 2 3 3 0 3 3 3 2 0 1 3 0 2 0 0 3 3 Computer1 wins!
 3 0 2 3 0 2 3 2 1 0 0 0 0 0 3 3 0 2 2 0 0 2 1 0 Computer1 wins!
 3 0 2 3 0 3 2 1 0 0 0 0 0 3 3 3 0 3 3 2 0 0 0 1 0 3 1 2 3 0 0 Computer2 wins!
@@ -15459,6 +15469,7 @@
 3 0 2 3 2 2 0 2 3 1 3 1 0 0 0 1 1 0 2 Computer2 wins!
 3 0 2 3 2 3 2 2 2 0 1 2 3 2 0 0 2 3 0 0 2 0 3 3 1 3 3 3 0 0 Computer1 wins!
 3 0 2 3 3 0 1 2 0 0 1 0 2 2 1 0 Computer1 wins!
+3 0 2 3 3 1 2 2 1 2 3 3 2 Computer2 wins!
 3 0 2 3 3 3 0 1 1 1 0 3 1 1 0 0 1 0 3 3 3 1 0 0 2 0 1 1 0 1 Computer1 wins!
 3 0 2 3 3 3 1 0 2 2 2 2 2 0 0 0 0 0 1 3 1 0 Computer1 wins!
 3 0 3 0 0 0 0 2 1 3 1 2 1 1 2 1 0 0 2 1 1 3 0 0 2 2 3 0 1 3 0 0 Computer1 wins!
@@ -16263,6 +16274,7 @@
 3 1 2 2 0 1 2 3 3 0 2 2 1 2 1 2 2 1 2 1 0 3 2 3 Computer1 wins!
 3 1 2 2 0 2 3 2 2 2 0 0 0 0 1 0 1 3 0 0 Computer1 wins!
 3 1 2 2 0 3 1 3 0 3 3 0 3 2 0 0 0 0 0 3 0 0 1 Computer2 wins!
+3 1 2 2 0 3 3 2 3 0 0 2 2 2 2 2 0 1 0 0 2 3 2 Computer2 wins!
 3 1 2 2 1 0 0 0 0 1 0 2 1 0 0 3 0 1 3 2 0 2 Computer2 wins!
 3 1 2 2 1 0 0 0 3 0 0 3 0 2 1 Computer2 wins!
 3 1 2 2 1 0 0 1 3 2 2 3 2 1 1 2 1 0 Computer1 wins!
@@ -16286,6 +16298,18 @@
 3 1 2 3 0 0 3 0 0 0 1 3 2 0 1 0 0 0 Computer1 wins!
 3 1 2 3 0 0 3 3 0 1 0 2 1 1 Computer1 wins!
 3 1 2 3 0 0 3 3 3 1 0 3 2 0 3 0 1 2 3 2 0 2 Computer2 wins!
+3 1 2 3 0 1 0 0 0 1 1 0 3 1 0 3 0 3 0 0 0 0 0 1 1 0 1 3 3 0 0 Computer1 wins!
+3 1 2 3 0 1 0 1 1 0 0 1 2 3 2 1 Computer1 wins!
+3 1 2 3 0 1 0 1 1 0 0 2 0 2 3 0 0 Computer2 wins!
+3 1 2 3 0 1 0 1 1 0 0 2 0 2 3 0 0 Computer2 wins!
+3 1 2 3 0 1 0 1 1 0 2 0 2 2 0 2 0 Computer2 wins!
+3 1 2 3 0 1 0 2 1 2 1 1 2 1 2 1 1 1 Computer1 wins!
+3 1 2 3 0 1 0 2 1 2 3 0 1 2 2 1 2 0 Computer1 wins!
+3 1 2 3 0 1 0 2 1 3 1 0 3 3 Computer1 wins!
+3 1 2 3 0 1 0 3 3 0 2 1 1 2 1 3 Computer1 wins!
+3 1 2 3 0 1 1 0 2 0 2 2 0 2 0 Computer2 wins!
+3 1 2 3 0 1 1 1 0 1 0 0 0 1 1 2 0 2 0 Computer2 wins!
+3 1 2 3 0 1 1 2 0 2 0 0 2 0 2 0 0 2 2 Computer2 wins!
 3 1 2 3 0 1 2 0 0 0 1 0 0 2 1 2 1 1 2 1 2 1 1 2 1 2 1 1 2 1 2 0 0 1 1 2 0 2 3 0 0 Computer2 wins!
 3 1 2 3 0 2 1 2 0 1 1 1 3 2 2 0 2 3 Computer1 wins!
 3 1 2 3 0 2 1 3 3 0 1 0 0 1 Computer1 wins!
@@ -16296,14 +16320,25 @@
 3 1 2 3 1 0 3 1 0 0 3 1 0 3 0 0 1 0 2 1 3 3 0 3 3 1 Computer1 wins!
 3 1 2 3 1 0 3 1 3 1 1 1 3 3 3 0 0 0 3 0 0 3 1 0 2 3 0 2 Computer1 wins!
 3 1 2 3 1 2 0 2 0 0 2 3 2 1 3 3 Computer1 wins!
+3 1 2 3 1 2 0 3 1 0 0 0 3 0 0 1 Computer1 wins!
+3 1 2 3 1 2 0 3 1 0 0 0 3 0 0 1 Computer1 wins!
 3 1 2 3 1 2 0 3 2 2 2 0 1 2 0 0 3 Computer2 wins!
+3 1 2 3 1 3 0 0 0 2 0 1 1 1 3 1 Computer1 wins!
 3 1 2 3 1 3 0 1 0 1 1 1 0 0 3 0 0 0 2 1 1 2 1 3 Computer1 wins!
+3 1 2 3 1 3 0 2 0 3 3 0 1 2 0 0 1 1 0 1 Computer2 wins!
+3 1 2 3 1 3 0 2 1 0 0 0 3 0 0 1 Computer1 wins!
+3 1 2 3 1 3 0 2 1 0 0 0 3 0 0 1 Computer1 wins!
+3 1 2 3 1 3 0 2 1 0 0 0 3 0 0 1 Computer1 wins!
+3 1 2 3 1 3 0 2 1 1 2 2 3 1 1 0 1 0 1 0 Computer1 wins!
 3 1 2 3 1 3 1 0 1 1 1 2 3 2 1 2 2 3 1 1 0 1 3 Computer2 wins!
 3 1 2 3 2 0 0 1 2 2 1 3 0 0 3 2 0 Computer2 wins!
 3 1 2 3 2 0 0 2 3 1 0 2 0 0 0 Computer2 wins!
 3 1 2 3 2 0 0 3 3 0 2 2 0 1 3 3 0 0 Computer2 wins!
+3 1 2 3 2 0 3 1 1 1 0 0 3 Computer1 wins!
 3 1 2 3 2 2 2 1 0 2 3 1 1 3 0 3 1 0 2 2 0 0 3 Computer2 wins!
 3 1 2 3 2 3 3 1 0 2 2 0 0 Computer2 wins!
+3 1 2 3 3 0 1 1 1 1 1 2 1 0 3 1 1 0 0 3 0 3 1 0 3 3 Computer1 wins!
+3 1 2 3 3 0 1 2 1 1 0 1 3 0 1 2 2 Computer2 wins!
 3 1 2 3 3 0 2 0 1 2 3 3 0 2 3 Computer2 wins!
 3 1 2 3 3 1 1 2 0 0 1 2 0 0 0 0 1 0 Computer1 wins!
 3 1 2 3 3 3 0 0 0 0 1 0 0 1 1 0 1 3 1 1 0 1 0 1 1 2 3 0 1 3 Computer1 wins!
@@ -16743,6 +16778,7 @@
 3 2 1 0 3 3 3 1 1 0 3 3 0 3 0 3 3 1 0 0 2 0 1 Computer2 wins!
 3 2 1 1 0 0 0 2 2 0 1 3 2 0 3 3 2 3 Computer1 wins!
 3 2 1 1 0 0 1 0 1 1 0 3 2 3 2 0 3 1 0 3 3 3 2 3 Computer1 wins!
+3 2 1 1 0 0 1 0 2 0 0 Computer1 wins!
 3 2 1 1 0 0 1 1 1 1 1 3 0 0 3 0 1 3 3 1 0 2 0 2 2 Computer2 wins!
 3 2 1 1 0 0 1 1 1 3 0 2 1 0 3 0 1 1 1 Computer2 wins!
 3 2 1 1 0 0 2 0 0 0 2 0 2 2 1 2 0 3 3 Computer2 wins!
@@ -16959,6 +16995,14 @@
 3 2 2 1 2 2 3 2 0 0 0 1 2 0 2 1 1 1 Computer1 wins!
 3 2 2 1 2 2 3 2 0 0 0 1 2 0 2 1 1 1 Computer1 wins!
 3 2 2 1 2 2 3 2 0 0 0 1 2 0 2 1 1 1 Computer1 wins!
+3 2 2 1 2 2 3 3 1 2 0 0 2 3 1 2 3 0 1 0 Computer1 wins!
+3 2 2 1 2 2 3 3 1 2 0 0 2 3 2 0 1 0 3 Computer2 wins!
+3 2 2 1 2 2 3 3 1 2 0 2 2 1 1 1 2 0 Computer1 wins!
+3 2 2 1 2 2 3 3 1 2 0 2 2 2 0 3 3 0 1 3 Computer1 wins!
+3 2 2 1 2 2 3 3 1 2 1 2 2 1 0 1 1 0 1 0 1 1 0 1 2 0 3 3 0 1 0 Computer2 wins!
+3 2 2 1 2 2 3 3 1 2 1 2 2 1 0 1 2 1 1 2 0 2 0 0 2 3 2 1 1 3 0 3 Computer2 wins!
+3 2 2 1 2 2 3 3 2 0 1 2 3 0 1 0 3 Computer2 wins!
+3 2 2 1 2 2 3 3 2 0 3 0 3 2 2 0 0 3 0 1 3 2 2 0 3 0 0 2 2 3 3 Computer2 wins!
 3 2 2 1 2 3 1 0 1 2 0 0 Computer1 wins!
 3 2 2 1 3 0 0 0 3 3 0 1 2 1 1 0 1 Computer1 wins!
 3 2 2 1 3 0 1 1 1 1 2 2 1 1 0 1 1 3 1 0 Computer1 wins!
@@ -17047,6 +17091,7 @@
 3 2 2 3 2 0 3 0 2 2 1 1 0 1 0 3 3 1 1 0 3 0 0 3 1 0 Computer1 wins!
 3 2 2 3 2 2 2 1 0 0 0 2 1 3 0 1 1 1 1 1 3 1 Computer1 wins!
 3 2 2 3 2 2 2 2 0 1 3 1 3 1 1 3 3 0 1 0 1 0 Computer1 wins!
+3 2 2 3 2 3 0 1 1 0 2 2 3 2 1 2 2 1 2 1 0 0 Computer1 wins!
 3 2 2 3 2 3 1 2 2 1 0 1 1 0 2 0 1 0 3 Computer2 wins!
 3 2 2 3 3 2 1 2 1 1 3 2 2 1 0 3 3 0 2 1 1 2 1 3 Computer1 wins!
 3 2 2 3 3 3 1 3 1 3 3 3 0 1 2 1 2 2 1 2 3 0 0 Computer2 wins!
@@ -17672,11 +17717,13 @@
 3 3 2 3 1 2 0 1 3 1 0 1 1 0 1 3 Computer1 wins!
 3 3 2 3 1 2 3 1 1 1 3 0 1 2 0 3 0 2 0 0 Computer2 wins!
 3 3 2 3 2 0 2 2 0 0 0 0 3 1 0 1 0 3 1 3 3 0 1 3 Computer1 wins!
+3 3 2 3 2 0 2 2 0 1 3 0 2 1 0 Computer2 wins!
 3 3 2 3 2 1 1 0 1 1 3 0 1 1 3 3 1 1 0 1 0 1 1 1 Computer1 wins!
 3 3 2 3 2 2 1 2 1 1 1 3 3 0 1 2 2 2 3 1 0 2 2 3 0 1 3 2 2 2 2 3 3 3 3 2 2 2 0 2 Computer1 wins!
 3 3 2 3 2 3 3 1 0 2 0 0 2 1 0 Computer2 wins!
 3 3 2 3 3 1 2 1 2 2 1 0 1 3 0 0 Computer1 wins!
 3 3 2 3 3 2 0 3 2 0 1 0 0 1 2 3 0 0 0 0 3 0 0 1 Computer1 wins!
+3 3 2 3 3 3 0 1 1 2 0 2 3 0 3 3 1 2 2 0 3 3 1 1 0 1 1 Computer2 wins!
 3 3 2 3 3 3 0 2 3 0 0 2 1 0 3 0 1 2 2 1 2 0 Computer1 wins!
 3 3 3 0 0 0 0 1 0 0 0 1 2 3 0 1 1 0 3 1 2 3 Computer1 wins!
 3 3 3 0 0 0 0 1 0 0 1 3 2 0 0 1 2 3 0 0 1 1 3 3 Computer1 wins!
@@ -17779,21 +17826,3 @@
 3 3 3 3 3 1 0 1 0 2 2 3 2 1 1 1 Computer1 wins!
 3 3 3 3 3 1 2 3 1 0 0 2 1 0 Computer1 wins!
 3 3 3 3 3 2 1 3 0 2 1 1 2 1 0 3 3 2 2 0 0 Computer2 wins!
-3 0 2 1 3 0 0 2 0 2 3 3 2 1 1 Computer2 wins!
-3 0 2 1 2 0 1 2 3 2 2 3 2 3 0 0 2 2 3 2 0 Computer2 wins!
-3 0 2 3 3 1 2 2 1 2 3 3 2 Computer2 wins!
-3 0 2 3 0 2 0 1 2 1 2 3 2 2 1 0 3 2 0 Computer2 wins!
-3 0 2 3 0 2 1 2 2 1 0 1 3 3 1 Computer2 wins!
-3 3 2 3 3 3 0 1 1 2 0 2 3 0 3 3 1 2 2 0 3 3 1 1 0 1 1 Computer2 wins!
-3 3 2 3 2 0 2 2 0 1 3 0 2 1 0 Computer2 wins!
-3 2 1 1 0 0 1 0 2 0 0 Computer1 wins!
-3 1 2 3 0 1 1 2 0 2 0 0 2 0 2 0 0 2 2 Computer2 wins!
-3 1 2 3 0 1 0 2 1 3 1 0 3 3 Computer1 wins!
-3 1 2 3 0 1 0 1 1 0 2 0 2 2 0 2 0 Computer2 wins!
-3 1 2 3 0 1 0 1 1 0 0 1 2 3 2 1 Computer1 wins!
-3 1 2 3 0 1 0 3 3 0 2 1 1 2 1 3 Computer1 wins!
-3 1 2 3 0 1 0 2 1 2 3 0 1 2 2 1 2 0 Computer1 wins!
-3 1 2 3 0 1 0 2 1 2 1 1 2 1 2 1 1 1 Computer1 wins!
-3 1 2 3 0 1 1 1 0 1 0 0 0 1 1 2 0 2 0 Computer2 wins!
-3 1 2 3 0 1 1 0 2 0 2 2 0 2 0 Computer2 wins!
-3 1 2 3 0 1 0 0 0 1 1 0 3 1 0 3 0 3 0 0 0 0 0 1 1 0 1 3 3 0 0 Computer1 wins!

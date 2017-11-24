@@ -7,7 +7,7 @@ import myGame.player.Player;
  */
 public class Board {
 
-    private int STANDARD_SIZE = 4;
+    private int STANDARD_SIZE = 5;
     private int STANDARD_WIDTH = STANDARD_SIZE, STANDARD_HEIGHT = STANDARD_SIZE; //gives flexibility, although non-square boards would mess up daigonal win checker
 
 
