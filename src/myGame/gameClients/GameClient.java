@@ -1,4 +1,4 @@
-package myGame;
+package myGame.gameClients;
 
 import myGame.gameplay.Board;
 import myGame.player.*;
