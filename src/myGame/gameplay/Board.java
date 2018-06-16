@@ -243,6 +243,17 @@ public class Board {
         return totalWins;
     }
 
+    public int pieceAt(int row, int col) {
+        String tileContent = tiles[row][col].getContents();
+        if (tileContent.equals("X")) {
+            return 1;
+        } else if (tileContent.equals("O")) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
+
     public String toString() {
         String fullBoard = "\n";
         for (int i = 0; i < width; i++) {

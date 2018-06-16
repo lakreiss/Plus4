@@ -1,5 +1,9 @@
 package myGame.player;
 
+import com.sun.corba.se.impl.orbutil.graph.Graph;
+import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.stage.Stage;
 import myGame.gameplay.Board;
 
 import java.util.Scanner;
@@ -42,6 +46,10 @@ public class Player {
             this.gameName = "O";
         }
         numPlayers += 1;
+    }
+
+    public int getPlay(Stage theStage, Scene theScene, GraphicsContext gc, Board gameBoard) {
+        return -1;
     }
 
     public int getPlay(Board gameBoard, Scanner console) {
