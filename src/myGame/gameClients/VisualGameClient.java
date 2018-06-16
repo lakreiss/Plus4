@@ -309,31 +309,35 @@ public class VisualGameClient extends Application {
                 output.println(compressedGame);
             }
 
-            System.out.println("");
-            if (winner.equals("tie")) {
-                System.out.println("It's a tie!");
-            } else {
+//            System.out.println("");
+            if (!winner.equals("tie")) {
                 winningPlayer.wonGame();
-                System.out.println(winner + " wins!");
+            } else {
+//                System.out.println(winner + " wins!");
 //                    checkGameOver(theStage, gc, players, gameInfo.get("reached10"), output);
-                gameOverScreen(theStage, theScene, gc, players, gameBoard, winningPlayer, output);
 //                playGame(theStage, theScene, gc, players, new Board(), output);
 
             }
+            gameOverScreen(theStage, theScene, gc, players, gameBoard, winningPlayer, winner, output);
+
 
         } else {
             showBoard(theStage, theScene, gc, gameBoard, players, gameInfo, winningPlayer, winner, compressedGame, output);
         }
     }
 
-    private static void gameOverScreen(Stage theStage, Scene theScene, GraphicsContext gc, Player[] players, Board gameBoard, Player winningPlayer, PrintStream output) {
+    private static void gameOverScreen(Stage theStage, Scene theScene, GraphicsContext gc, Player[] players, Board gameBoard, Player winningPlayer, String winner, PrintStream output) {
         drawBoard(gc, gameBoard);
 
         int curTextY = ORIG_TEXT_Y;
 
         gc.setFill(Color.BLACK);
         gc.fillText("Game Over", ORIG_TEXT_X, curTextY += ORIG_TEXT_STEP_SIZE);
-        gc.fillText(winningPlayer.getFullName() + " has won! ", ORIG_TEXT_X, curTextY += ORIG_TEXT_STEP_SIZE);
+        if (winner.equals("tie")) {
+            gc.fillText("It's a tie! ", ORIG_TEXT_X, curTextY += ORIG_TEXT_STEP_SIZE);
+        } else {
+            gc.fillText(winningPlayer.getFullName() + " has won! ", ORIG_TEXT_X, curTextY += ORIG_TEXT_STEP_SIZE);
+        }
         gc.fillText("Play again?", ORIG_TEXT_X, curTextY += ORIG_TEXT_STEP_SIZE);
 
         gc.setFill(Color.LIGHTGRAY);
