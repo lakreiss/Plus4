@@ -36,6 +36,12 @@ public class IntelligentComputer extends HardComputer {
             e.printStackTrace();
         }
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         ArrayList<CompressedGame> gamesWithSameMovesSoFar = new ArrayList<>();
 
         while (fullData.hasNextLine()) {
