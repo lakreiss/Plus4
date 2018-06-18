@@ -14,7 +14,6 @@ import java.util.Scanner;
 public class Player {
     private static int numPlayers = 0;
     private String fullName;
-    private String gameName;
     protected int playerNumber;
     private int score;
     protected static Player[] players;
@@ -22,30 +21,39 @@ public class Player {
     public Player() {
         this.fullName = "Computer";
         this.playerNumber = numPlayers;
-        if (playerNumber == 0) {
-            this.gameName = "X";
-        } else if (playerNumber == 1) {
-            this.gameName = "O";
-        }
         numPlayers += 1;
         this.score = 0;
     }
 
     public Player(boolean placeholder) {
         this.fullName = "";
-        this.gameName = "";
         this.score = -1;
+    }
+
+    public Player(String name, int playerNumber) {
+        this.fullName = name;
+        this.playerNumber = playerNumber;
+        numPlayers += 1;
+        this.score = 0;
     }
 
     public Player(String name) {
         this.playerNumber = numPlayers;
         this.fullName = name;
-        if (playerNumber == 0) {
-            this.gameName = "X";
-        } else if (playerNumber == 1) {
-            this.gameName = "O";
-        }
         numPlayers += 1;
+        this.score = 0;
+    }
+
+    public String getGameName() {
+        if (this.playerNumber == 0) {
+            return "X";
+        } else if (this.playerNumber == 1) {
+            return "O";
+        } else if (this.playerNumber == 2) {
+            return "";
+        } else {
+            throw new Error("invalid player number");
+        }
     }
 
     public int getPlay(Stage theStage, Scene theScene, GraphicsContext gc, Board gameBoard) {
@@ -58,10 +66,6 @@ public class Player {
 
     public int getPlay(Board gameBoard) {
         return -1;
-    }
-
-    public String getGameName() {
-        return this.gameName;
     }
 
     public String getFullName() {

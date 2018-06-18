@@ -10,12 +10,20 @@ import java.util.Scanner;
 public class EasyComputer extends ComputerPlayer {
 
     public EasyComputer() {
-        super("easy");
+        super("Easy");
     }
 
-    public int getPlay(Board board, Scanner scanner) {
+    public EasyComputer(int playerNumber) {
+        super("Easy", playerNumber);
+    }
+
+    public int getPlay(Board board) {
         int boardSize = board.getWidth();
 
         return ((int) (Math.random() * 10)) % boardSize;
+    }
+
+    public int getPlay(Board board, Scanner console) {
+        return getPlay(board);
     }
 }

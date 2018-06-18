@@ -11,17 +11,7 @@ import myGame.gameplay.Board;
  */
 public class HumanVisualPlayer extends HumanPlayer {
 
-    public HumanVisualPlayer(String name) {
-        super(name);
+    public HumanVisualPlayer(String name, int playerNumber) {
+        super(name, playerNumber);
     }
-
-//    public int getPlay(Stage theStage, Scene theScene, GraphicsContext gc, Board gameBoard) {
-//        int col = VisualGameClient.showBoard(theStage, theScene, gc, gameBoard);
-//        if (col < 0 || col > 3) {
-//            throw new Error("invalid column");
-//        } else {
-//            return col;
-//        }
-//
-//    }
 }

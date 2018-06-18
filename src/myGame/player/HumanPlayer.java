@@ -13,6 +13,10 @@ public class HumanPlayer extends Player {
         super(name);
     }
 
+    public HumanPlayer(String name, int playerNumber) {
+        super(name, playerNumber);
+    }
+
     public int getPlay(Board gameBoard, Scanner console) {
         System.out.print("Where do you want to play? ");
         String errorMessage = "You entered an invalid input. Choose a column between 0 and "

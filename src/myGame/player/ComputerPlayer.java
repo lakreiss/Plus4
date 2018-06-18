@@ -20,7 +20,15 @@ public class ComputerPlayer extends Player {
         super(name);
     }
 
+    public ComputerPlayer(String name, int playerNumber) {
+        super(name, playerNumber);
+    }
+
     public int getPlay(Board board, Scanner scanner) {
+        return -1;
+    }
+
+    public int getPlay(Board board) {
         return -1;
     }
 

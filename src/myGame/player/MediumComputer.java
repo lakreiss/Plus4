@@ -14,7 +14,15 @@ public class MediumComputer extends ComputerPlayer {
         super();
     }
 
-    public int getPlay(Board board, Scanner scanner) {
+    public MediumComputer(int playerNumber) {
+        super("Medium", playerNumber);
+    }
+
+    public int getPlay(Board board) {
         return super.playWithMovesInAdvance(board, MOVES_IN_ADVANCE);
+    }
+
+    public int getPlay(Board board, Scanner console) {
+        return getPlay(board);
     }
 }
