@@ -315,6 +315,26 @@ public class VisualGameClient extends Application {
             }
         }
 
+        //make difficulty text
+        if (gameInfo.get("singlePlayer")) {
+            gc.setFill(Color.BLACK);
+            String difficulty;
+            if (gameInfo.get("easy")) {
+                difficulty = "Easy";
+            } else if (gameInfo.get("medium")) {
+                difficulty = "Medium";
+            } else if (gameInfo.get("hard")) {
+                difficulty = "Hard";
+            } else if (gameInfo.get("intelligent")) {
+                difficulty = "Intelligent";
+            } else {
+                difficulty = "ERROR, no computer difficulty selected";
+            }
+            gc.fillText("Difficulty: " + difficulty, UPPER_LEFT_BOARD_X, UPPER_LEFT_BOARD_Y + (BOARD_SIZE * SQUARE_SIZE) + ORIG_TEXT_STEP_SIZE);
+        }
+
+
+        //make main menu button
         gc.setFill(Color.LIGHTGRAY);
         gc.fillRect(10, 10, 70, 20);
         gc.setFill(Color.BLACK);
@@ -429,9 +449,11 @@ public class VisualGameClient extends Application {
 
                     if (clickInfo.get("clicked")) {
                         if (clickInfo.get("clickedOnOnePlayer")) {
+                            gameInfo.put("singlePlayer", true);
                             onePlayerScreen(theStage, theScene, gc, players, output);
                         } else if (clickInfo.get("clickedOnTwoPlayer")){
                             try {
+                                gameInfo.put("singlePlayer", false);
                                 players[0] = new HumanVisualPlayer("Player 1", 0);
                                 players[1] = new HumanVisualPlayer("Player 2", 1);
                                 players[2] = new Nobody();
@@ -631,12 +653,28 @@ public class VisualGameClient extends Application {
                         } else if (clickInfo.get("clickedOnSecondPlay")){
                             chooseDifficultyScreen(theStage, theScene, gc, players, false, output);
                         } else if (clickInfo.get("clickedOnEasy")) {
+                            gameInfo.put("easy", true);
+                            gameInfo.put("medium", false);
+                            gameInfo.put("hard", false);
+                            gameInfo.put("intelligent", false);
                             difficulty[0] = Difficulty.EASY;
                         } else if (clickInfo.get("clickedOnMedium")) {
+                            gameInfo.put("easy", false);
+                            gameInfo.put("medium", true);
+                            gameInfo.put("hard", false);
+                            gameInfo.put("intelligent", false);
                             difficulty[0] = Difficulty.MEDIUM;
                         } else if (clickInfo.get("clickedOnHard")) {
+                            gameInfo.put("easy", false);
+                            gameInfo.put("medium", false);
+                            gameInfo.put("hard", true);
+                            gameInfo.put("intelligent", false);
                             difficulty[0] = Difficulty.HARD;
                         } else if (clickInfo.get("clickedOnIntelligent")) {
+                            gameInfo.put("easy", false);
+                            gameInfo.put("medium", false);
+                            gameInfo.put("hard", false);
+                            gameInfo.put("intelligent", true);
                             difficulty[0] = Difficulty.INTELLIGENT;
                         }
                         if (clickInfo.get("clickedDifficulty")) {
