@@ -15,7 +15,7 @@ public class HardComputer extends ComputerPlayer{
     }
 
     public HardComputer(int playerNumber) {
-        super("Hard", playerNumber);
+        super(playerNumber);
     }
 
     public HardComputer(String name, int playerNumber) {

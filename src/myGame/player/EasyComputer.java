@@ -14,7 +14,7 @@ public class EasyComputer extends ComputerPlayer {
     }
 
     public EasyComputer(int playerNumber) {
-        super("Easy", playerNumber);
+        super(playerNumber);
     }
 
     public int getPlay(Board board) {

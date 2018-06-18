@@ -203,12 +203,18 @@ public class VisualGameClient extends Application {
     private static void drawBoard(GraphicsContext gc, Board gameBoard) {
         gc.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
+        gc.setFill(Color.LIGHTBLUE);
+        gc.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
         //makes the board (with black tiles)
         int curX = UPPER_LEFT_BOARD_X, curY = UPPER_LEFT_BOARD_Y;
         gc.setFill(Color.BLACK);
-
+        gc.fillRect(curX - 1, curY - 1, (BOARD_SIZE * SQUARE_SIZE) + 2, (BOARD_SIZE * SQUARE_SIZE) + 2);
         for (int i = 0; i < BOARD_SIZE; i++) {
             for (int j = 0; j < BOARD_SIZE; j++) {
+                gc.setFill(Color.BLACK);
+                gc.fillRect(curX, curY, SQUARE_SIZE, SQUARE_SIZE);
+                gc.setFill(Color.LIGHTGRAY);
                 gc.fillRect(curX + 1, curY + 1, SQUARE_SIZE - 2, SQUARE_SIZE - 2);
                 curX += SQUARE_SIZE;
             }
@@ -217,17 +223,13 @@ public class VisualGameClient extends Application {
         }
 
         //Place yellow circle around the piece to show who's turn it is
-        gc.setFill(Color.BLACK);
+        gc.setFill(Color.YELLOW);
         if (gameInfo.get("p1Turn")) {
-            gc.fillOval(CENTER_X_RED - BORDER_OUTLINE_RADIUS, CENTER_Y_RED - BORDER_OUTLINE_RADIUS,
-                    (BORDER_OUTLINE_RADIUS * 2), (BORDER_OUTLINE_RADIUS * 2));
-            gc.setFill(Color.YELLOW);
+//            gc.fillOval(CENTER_X_RED - BORDER_OUTLINE_RADIUS, CENTER_Y_RED - BORDER_OUTLINE_RADIUS, (BORDER_OUTLINE_RADIUS * 2), (BORDER_OUTLINE_RADIUS * 2)); //could add a black border around the yellow circle
             gc.fillOval(CENTER_X_RED - OUTLINE_RADIUS, CENTER_Y_RED - OUTLINE_RADIUS,
                     (OUTLINE_RADIUS * 2), (OUTLINE_RADIUS * 2));
         } else {
-            gc.fillOval(CENTER_X_BLUE - BORDER_OUTLINE_RADIUS, CENTER_Y_BLUE - BORDER_OUTLINE_RADIUS,
-                    (BORDER_OUTLINE_RADIUS * 2), (BORDER_OUTLINE_RADIUS * 2));
-            gc.setFill(Color.YELLOW);
+//            gc.fillOval(CENTER_X_BLUE - BORDER_OUTLINE_RADIUS, CENTER_Y_BLUE - BORDER_OUTLINE_RADIUS, (BORDER_OUTLINE_RADIUS * 2), (BORDER_OUTLINE_RADIUS * 2)); //could add a black border around the yellow circle
             gc.fillOval(CENTER_X_BLUE - OUTLINE_RADIUS, CENTER_Y_BLUE - OUTLINE_RADIUS,
                     (OUTLINE_RADIUS * 2), (OUTLINE_RADIUS * 2));
         }
@@ -298,18 +300,34 @@ public class VisualGameClient extends Application {
 
 
         //make main menu button
+        drawMainMenuButton(gc);
+    }
+
+    private static void drawRulesButton(GraphicsContext gc) {
+        //make main menu button
+        gc.setFill(Color.BLACK);
+        gc.fillRect(9, 9, 72, 22);
+        gc.setFill(Color.LIGHTGRAY);
+        gc.fillRect(10, 10, 70, 20);
+        gc.setFill(Color.BLACK);
+        gc.fillText("Rules", 28, 24);
+    }
+
+    private static void drawMainMenuButton(GraphicsContext gc) {
+        //make main menu button
+        gc.setFill(Color.BLACK);
+        gc.fillRect(9, 9, 72, 22);
         gc.setFill(Color.LIGHTGRAY);
         gc.fillRect(10, 10, 70, 20);
         gc.setFill(Color.BLACK);
         gc.fillText("Main Menu", 12, 24);
     }
 
-    private static void drawRulesButton(GraphicsContext gc) {
-        //make rules button
-        gc.setFill(Color.LIGHTGRAY);
-        gc.fillRect(10, 10, 70, 20);
+    private static void drawButton(GraphicsContext gc, int topLeftX, int topLeftY, int width, int height, Color c) {
         gc.setFill(Color.BLACK);
-        gc.fillText("Rules", 28, 24);
+        gc.fillRect(topLeftX - 1, topLeftY - 1, width + 2, height + 2);
+        gc.setFill(c);
+        gc.fillRect(topLeftX, topLeftY, width, height);
     }
 
     private static void createClickables() {
@@ -479,14 +497,14 @@ public class VisualGameClient extends Application {
         gc.fillText("Welcome to Plus4", (CANVAS_WIDTH / 2) - 60, 30);
         gc.fillText("How many people want to play?", (CANVAS_WIDTH / 2) - 100, 60);
 
-        gc.setFill(Color.WHITE);
-        gc.fillRect((CANVAS_WIDTH / 2) - MENU_BUTTON_WIDTH - 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT);
-        gc.fillRect((CANVAS_WIDTH / 2) + 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT);
+        drawButton(gc, (CANVAS_WIDTH / 2) - MENU_BUTTON_WIDTH - 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT, Color.LIGHTBLUE);
+        drawButton(gc, (CANVAS_WIDTH / 2) + 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT, Color.LIGHTBLUE);
 
         gc.setFill(Color.BLACK);
         gc.fillText("One", (CANVAS_WIDTH / 2) - MENU_BUTTON_WIDTH - 10, UPPER_BUTTON_Y + (MENU_BUTTON_HEIGHT / 2));
         gc.fillText("Two", (CANVAS_WIDTH / 2) + 85, UPPER_BUTTON_Y + (MENU_BUTTON_HEIGHT / 2));
 
+        //make rules button
         drawRulesButton(gc);
 
         HashMap<String, Boolean> clickInfo = new HashMap<>();
@@ -551,14 +569,14 @@ public class VisualGameClient extends Application {
         gc.fillText("Welcome to Plus4", (CANVAS_WIDTH / 2) - 60, 30);
         gc.fillText("Would you like to go first or second?", (CANVAS_WIDTH / 2) - 120, 60);
 
-        gc.setFill(Color.WHITE);
-        gc.fillRect((CANVAS_WIDTH / 2) - MENU_BUTTON_WIDTH - 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT);
-        gc.fillRect((CANVAS_WIDTH / 2) + 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT);
+        drawButton(gc, (CANVAS_WIDTH / 2) - MENU_BUTTON_WIDTH - 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT, Color.LIGHTBLUE);
+        drawButton(gc, (CANVAS_WIDTH / 2) + 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT, Color.LIGHTBLUE);
 
         gc.setFill(Color.BLACK);
         gc.fillText("First", (CANVAS_WIDTH / 2) - MENU_BUTTON_WIDTH - 13, UPPER_BUTTON_Y + (MENU_BUTTON_HEIGHT / 2));
         gc.fillText("Second", (CANVAS_WIDTH / 2) + 77, UPPER_BUTTON_Y + (MENU_BUTTON_HEIGHT / 2));
 
+        //make rules button
         drawRulesButton(gc);
 
         HashMap<String, Boolean> clickInfo = new HashMap<>();
@@ -619,18 +637,14 @@ public class VisualGameClient extends Application {
 
         //make turn options
         if (userGoesFirst) {
+            drawButton(gc, (CANVAS_WIDTH / 2) - MENU_BUTTON_WIDTH - 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT, Color.YELLOW);
+            drawButton(gc, (CANVAS_WIDTH / 2) + 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT, Color.LIGHTBLUE);
             gc.setFill(Color.YELLOW);
         } else {
-            gc.setFill(Color.WHITE);
+            drawButton(gc, (CANVAS_WIDTH / 2) - MENU_BUTTON_WIDTH - 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT, Color.LIGHTBLUE);
+            drawButton(gc, (CANVAS_WIDTH / 2) + 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT, Color.YELLOW);
+            gc.setFill(Color.LIGHTBLUE);
         }
-        gc.fillRect((CANVAS_WIDTH / 2) - MENU_BUTTON_WIDTH - 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT);
-
-        if (userGoesFirst) {
-            gc.setFill(Color.WHITE);
-        } else {
-            gc.setFill(Color.YELLOW);
-        }
-        gc.fillRect((CANVAS_WIDTH / 2) + 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT);
 
         gc.setFill(Color.BLACK);
         gc.fillText("First", (CANVAS_WIDTH / 2) - MENU_BUTTON_WIDTH - 13, UPPER_BUTTON_Y + (MENU_BUTTON_HEIGHT / 2));
@@ -638,12 +652,14 @@ public class VisualGameClient extends Application {
 
         gc.fillText("What difficulty would you like to play against?", (CANVAS_WIDTH / 2) - 140, 260);
 
+        //make rules button
         drawRulesButton(gc);
 
         //make difficulty buttons
-        gc.setFill(Color.WHITE);
+        gc.setFill(Color.LIGHTBLUE);
         for (int i = 0; i < BOARD_SIZE; i++) {
-            gc.fillRect((CANVAS_WIDTH / 2) - (DIST_BETWEEN_DIFFICULTY_BUTTONS * 1.5) - (MENU_BUTTON_WIDTH * 2) + (i * (MENU_BUTTON_WIDTH + DIST_BETWEEN_DIFFICULTY_BUTTONS)), 260 + BUTTON_DIST_BELOW_ORIG_TEXT_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT);
+
+            drawButton(gc, (int) ((CANVAS_WIDTH / 2) - (DIST_BETWEEN_DIFFICULTY_BUTTONS * 1.5) - (MENU_BUTTON_WIDTH * 2) + (i * (MENU_BUTTON_WIDTH + DIST_BETWEEN_DIFFICULTY_BUTTONS))), 260 + BUTTON_DIST_BELOW_ORIG_TEXT_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT, Color.LIGHTBLUE);
         }
 
         gc.setFill(Color.BLACK);
@@ -830,20 +846,9 @@ public class VisualGameClient extends Application {
         gc.fillText("4) If a piece is pushed past the fourth row, it is gone forever.", curX, curY += (3 * TEXT_STEP_SIZE));
         gc.fillText("5) Impressed with yourself for beating Intelligent? \n    Try playing it again – it has learned from its mistakes.", curX, curY += (2 * TEXT_STEP_SIZE));
 
-        //TODO: update with rules
-//        gc.setFill(Color.WHITE);
-//        gc.fillRect((CANVAS_WIDTH / 2) - MENU_BUTTON_WIDTH - 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT);
-//        gc.fillRect((CANVAS_WIDTH / 2) + 50, UPPER_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT);
-//
-//        gc.setFill(Color.BLACK);
-//        gc.fillText("One", (CANVAS_WIDTH / 2) - MENU_BUTTON_WIDTH - 10, UPPER_BUTTON_Y + (MENU_BUTTON_HEIGHT / 2));
-//        gc.fillText("Two", (CANVAS_WIDTH / 2) + 85, UPPER_BUTTON_Y + (MENU_BUTTON_HEIGHT / 2));
 
         //make main menu button
-        gc.setFill(Color.LIGHTGRAY);
-        gc.fillRect(10, 10, 70, 20);
-        gc.setFill(Color.BLACK);
-        gc.fillText("Main Menu", 12, 24);
+        drawMainMenuButton(gc);
 
         HashMap<String, Boolean> clickInfo = new HashMap<>();
         clickInfo.put("clicked", false);
@@ -884,9 +889,8 @@ public class VisualGameClient extends Application {
         }
         gc.fillText("Play again?", ORIG_TEXT_X, curTextY += TEXT_STEP_SIZE);
 
-        gc.setFill(Color.LIGHTGRAY);
-        gc.fillRect(ORIG_TEXT_X, ORIG_TEXT_Y + BUTTON_DIST_BELOW_ORIG_TEXT_Y, PLAY_AGAIN_BUTTON_WIDTH, PLAY_AGAIN_BUTTON_HEIGHT);
-        gc.fillRect(ORIG_TEXT_X + PLAY_AGAIN_BUTTON_WIDTH + DIST_BETWEEN_PLAY_AGAIN_BUTTONS, ORIG_TEXT_Y + BUTTON_DIST_BELOW_ORIG_TEXT_Y, PLAY_AGAIN_BUTTON_WIDTH, PLAY_AGAIN_BUTTON_HEIGHT);
+        drawButton(gc, ORIG_TEXT_X, ORIG_TEXT_Y + BUTTON_DIST_BELOW_ORIG_TEXT_Y, PLAY_AGAIN_BUTTON_WIDTH, PLAY_AGAIN_BUTTON_HEIGHT, Color.LIGHTGRAY);
+        drawButton(gc, ORIG_TEXT_X + PLAY_AGAIN_BUTTON_WIDTH + DIST_BETWEEN_PLAY_AGAIN_BUTTONS, ORIG_TEXT_Y + BUTTON_DIST_BELOW_ORIG_TEXT_Y, PLAY_AGAIN_BUTTON_WIDTH, PLAY_AGAIN_BUTTON_HEIGHT, Color.LIGHTGRAY);
 
         gc.setFill(Color.BLACK);
         gc.fillText("Yes", ORIG_TEXT_X + 13, ORIG_TEXT_Y + BUTTON_DIST_BELOW_ORIG_TEXT_Y + (PLAY_AGAIN_BUTTON_HEIGHT / 2) + 5);

@@ -24,7 +24,7 @@ public class IntelligentComputer extends HardComputer {
     }
 
     public IntelligentComputer(int playerNumber) {
-        super("Intelligent", playerNumber);
+        super(playerNumber);
     }
 
     public int getPlay(Board board, Scanner scanner) {

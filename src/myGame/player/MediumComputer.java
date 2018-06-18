@@ -15,7 +15,7 @@ public class MediumComputer extends ComputerPlayer {
     }
 
     public MediumComputer(int playerNumber) {
-        super("Medium", playerNumber);
+        super(playerNumber);
     }
 
     public int getPlay(Board board) {
