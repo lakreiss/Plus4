@@ -12,19 +12,21 @@ import java.util.Scanner;
  * Created by liamkreiss on 10/28/17.
  */
 public class IntelligentComputer extends HardComputer {
-    private static File DATA_FILE = new File("sorted_data1511502410478");
-    private Scanner fullData;
+    private static File DATA_FILE;
 
-    public IntelligentComputer() {
+    public IntelligentComputer(String dataFile) {
         super();
+        DATA_FILE = new File(dataFile);
     }
 
-    public IntelligentComputer(String name) {
+    public IntelligentComputer(String name, String dataFile) {
         super(name);
+        DATA_FILE = new File(dataFile);
     }
 
-    public IntelligentComputer(int playerNumber) {
+    public IntelligentComputer(int playerNumber, String dataFile) {
         super(playerNumber);
+        DATA_FILE = new File(dataFile);
     }
 
     public int getPlay(Board board, Scanner scanner) {

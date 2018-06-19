@@ -1,13 +1,15 @@
 package myGame.gameClients;
 
+import javafx.animation.PathTransition;
+import javafx.animation.Timeline;
 import javafx.scene.*;
 import javafx.application.Application;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import myGame.gameplay.Board;
 import myGame.player.*;
 
@@ -38,7 +40,9 @@ public class VisualGameClient extends Application {
 
     private static final boolean saveToData = true;
     private static final String DATA_FILE = "sorted_data1511502410478";
-    private static final boolean GAME_TO_10 = true;
+//    private static final boolean GAME_TO_10 = true;
+    private static final boolean computerMoveAfterClick = false;
+
 
     private static Rectangle[] columns;
     private static Rectangle[] buttons;
@@ -156,47 +160,47 @@ public class VisualGameClient extends Application {
         } else if (difficulty.equals(Difficulty.HARD)) {
             return new HardComputer(playerNumber);
         } else if (difficulty.equals(Difficulty.INTELLIGENT)) {
-            return new IntelligentComputer(playerNumber);
+            return new IntelligentComputer(playerNumber, DATA_FILE);
         } else {
             throw new Error("invalid difficulty");
         }
     }
 
-    private static void checkGameOver(Stage theStage, GraphicsContext gc, Player[] players,
-                                      boolean reached10, PrintStream output) throws InterruptedException {
-        if (GAME_TO_10) {
-
-            if (players[0].getScore() > players[1].getScore()) {
-                if (players[0].getScore() >= 10) {
-                    reached10 = true;
-                    System.out.println(players[0].getFullName() + " scored 10 points and won!");
-                }
-            } else if (players[1].getScore() > players[0].getScore()){
-                if (players[1].getScore() >= 10) {
-                    reached10 = true;
-                    System.out.println(players[1].getFullName() + " scored 10 points and won!");
-                }
-            } else {
-                if (players[0].getScore() >= 10) {
-                    reached10 = true;
-                    System.out.println(players[0].getFullName() + " and " + players[1].getFullName() + " tied!");
-                }
-            }
-        }
-
-        if (reached10) {
-            players[0].resetScore();
-            players[1].resetScore();
-        }
-
-//        System.out.println("\nScore:");
-//        System.out.println(players[0] + ": " + players[0].getScore());
-//        System.out.println(players[1] + ": " + players[1].getScore());
-//        System.out.println();
-
-        theStage.show();
-        Thread.sleep(5000);
-    }
+//    private static void checkGameOver(Stage theStage, GraphicsContext gc, Player[] players,
+//                                      boolean reached10, PrintStream output) throws InterruptedException {
+//        if (GAME_TO_10) {
+//
+//            if (players[0].getScore() > players[1].getScore()) {
+//                if (players[0].getScore() >= 10) {
+//                    reached10 = true;
+//                    System.out.println(players[0].getFullName() + " scored 10 points and won!");
+//                }
+//            } else if (players[1].getScore() > players[0].getScore()){
+//                if (players[1].getScore() >= 10) {
+//                    reached10 = true;
+//                    System.out.println(players[1].getFullName() + " scored 10 points and won!");
+//                }
+//            } else {
+//                if (players[0].getScore() >= 10) {
+//                    reached10 = true;
+//                    System.out.println(players[0].getFullName() + " and " + players[1].getFullName() + " tied!");
+//                }
+//            }
+//        }
+//
+//        if (reached10) {
+//            players[0].resetScore();
+//            players[1].resetScore();
+//        }
+//
+////        System.out.println("\nScore:");
+////        System.out.println(players[0] + ": " + players[0].getScore());
+////        System.out.println(players[1] + ": " + players[1].getScore());
+////        System.out.println();
+//
+//        theStage.show();
+//        Thread.sleep(5000);
+//    }
 
     //                 ***************           DRAWING & CLICKABLES         ***************
 
@@ -360,8 +364,8 @@ public class VisualGameClient extends Application {
         }
 
         //make buttons
-        //TODO: change from 9 when I add more buttons
-        buttons = new Rectangle[9];
+        //TODO: change from 10 when I add more buttons
+        buttons = new Rectangle[10];
         //0, 1 -> Play Agin (Yes/NO)
         //2, 3 -> Menu Buttons (How many players, who wants to go first)
         //4, 5, 6, 7 -> Difficulty buttons (easy, medium, hard, intelligent)
@@ -385,6 +389,9 @@ public class VisualGameClient extends Application {
 
         Rectangle mainMenuButton = new Rectangle(10, 10, 70, 20);
         buttons[8] = mainMenuButton;
+
+        Rectangle screenButton = new Rectangle(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        buttons[9] = screenButton;
 
     }
 
@@ -410,14 +417,46 @@ public class VisualGameClient extends Application {
         theStage.show();
 
         if ((gameInfo.get("p1Turn") && players[0] instanceof ComputerPlayer) ||  (!gameInfo.get("p1Turn") && players[1] instanceof ComputerPlayer)) {
-            //disable clicking
-            theScene.setOnMouseClicked(
-                    e -> {
-                    }
-            );
+            if (computerMoveAfterClick) {
+                HashMap<String, Boolean> clickInfo = new HashMap<>();
+                clickInfo.put("clicked", false);
+                clickInfo.put("clickedOnScreen", false);
+                clickInfo.put("clickedMainMenu", false);
+                final int[] columnClickedOn = {-1};
 
-            int col = gameInfo.get("p1Turn") ? ((ComputerPlayer) players[0]).getPlay(gameBoard) : ((ComputerPlayer) players[1]).getPlay(gameBoard);
-            makeMove(col, players, theStage, theScene, gc, gameBoard, gameInfo, output);
+                theScene.setOnMouseClicked(
+                        e -> {
+                            //by checking the main menu button first, we can make a rectangle that covers the entire canvas and not worry about the click registering as both a screen click and a main menu click
+                            if (buttons[8].contains(e.getX(), e.getY())) {
+                                clickInfo.put("clicked", true);
+                                clickInfo.put("clickedOnScreen", false);
+                                clickInfo.put("clickedMainMenu", true);
+//                            System.out.println("clicked the red piece");
+                            } else if (buttons[9].contains(e.getX(), e.getY())) {
+                                clickInfo.put("clicked", true);
+                                clickInfo.put("clickedOnScreen", true);
+                                clickInfo.put("clickedMainMenu", false);
+                            }
+
+                            if (clickInfo.get("clicked")) {
+                                if (clickInfo.get("clickedMainMenu")) {
+                                    pregameScreen(theStage, theScene, gc, new Player[3], output);
+                                } else if (clickInfo.get("clickedOnScreen")) {
+                                    int col = gameInfo.get("p1Turn") ? ((ComputerPlayer) players[0]).getPlay(gameBoard) : ((ComputerPlayer) players[1]).getPlay(gameBoard);
+                                    makeMove(col, players, theStage, theScene, gc, gameBoard, gameInfo, output);
+                                }
+                            }
+                        }
+                );
+            } else {
+                //disable clicking
+                theScene.setOnMouseClicked(
+                        e -> {
+                        }
+                );
+                int col = gameInfo.get("p1Turn") ? ((ComputerPlayer) players[0]).getPlay(gameBoard) : ((ComputerPlayer) players[1]).getPlay(gameBoard);
+                makeMove(col, players, theStage, theScene, gc, gameBoard, gameInfo, output);
+            }
 
         } else {
 

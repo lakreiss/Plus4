@@ -158,10 +158,7 @@ public class GameClient {
         System.out.print("Play again? y for yes, anything else for no ");
         Scanner line = new Scanner(console.nextLine());
         String lineText = line.next().toLowerCase();
-        if (lineText.equals("y") || lineText.equals("yes")) {
-            return true;
-        }
-        return false;
+        return lineText.equals("y") || lineText.equals("yes");
     }
 
     private static Player[] getPlayers(int numPlayers, Scanner console, boolean computerFirst) {
@@ -190,11 +187,12 @@ public class GameClient {
                 "and connect four in a row to win. Good luck!";
     }
 
-    public static int getNumPlayers(Scanner console) {
+    private static int getNumPlayers(Scanner console) {
         String errorMessage = "You entered an invalid input. You can have either 1 or 2 players.\n" +
                 "Please try again: ";
         System.out.print("How many people want to play? ");
-        int numPlayers = 0;
+        int numPlayers;
+        numPlayers = 0;
         Scanner line = new Scanner(console.nextLine());
         if (line.hasNextInt()) {
             int players = line.nextInt();
@@ -244,7 +242,7 @@ public class GameClient {
         } else if (difficulty.equals("h") || difficulty.equals("hard")) {
             return new HardComputer();
         } else if (difficulty.equals("i") || difficulty.equals("intelligent")) {
-            return new IntelligentComputer();
+            return new IntelligentComputer(DATA_FILE);
         } else {
             System.out.println("You entered invalid input. Please try again.");
             return getComputerPlayer(console);

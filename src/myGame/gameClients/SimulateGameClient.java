@@ -23,8 +23,8 @@ public class SimulateGameClient {
 
     public static void main(String[] args) throws FileNotFoundException {
         Player[] players = new Player[]{
-                new IntelligentComputer("Computer1"),
-                new IntelligentComputer("Computer2"),
+                new IntelligentComputer("Computer1", DATA_FILE),
+                new IntelligentComputer("Computer2", DATA_FILE),
                 new Nobody()
         };
 
